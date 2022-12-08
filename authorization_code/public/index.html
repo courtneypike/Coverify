@@ -54,7 +54,7 @@
     </script> -->
 
     <script id="user-top-artists" type="text/x-handlebars-template">
-      <p>{{items}}</p>
+        <div id ="exampleTop"></div>
     </script>
 
     <script id="oauth-template" type="text/x-handlebars-template">
@@ -114,8 +114,11 @@
                   'Authorization': 'Bearer ' + access_token
                 },
                 success: function(response) {
-                  userProfilePlaceholder.innerHTML = userTopTracksTemplate(response);
+                  let topTracks= JSON.stringify(response)
+                  userProfilePlaceholder.innerHTML = userTopTracksTemplate(topTracks);
                   console.log(response)
+                  console.log(response.items.length)
+                  parseJSON(response.items)
                   $('#login').hide();
                   $('#loggedin').show();
                 }
@@ -142,6 +145,16 @@
           }, false);
         }
       })();
+
+        function parseJSON(data){
+          var mainContainer = document.getElementById("exampleTop");
+                  for (var i = 0; i < data.length; i++) {
+                    var div = document.createElement("div");
+                    div.innerHTML = 'Name: ' + data[i].name;
+                    mainContainer.appendChild(div);
+                    console.log(div)
+                  }
+        }
     </script>
   </body>
 </html>
