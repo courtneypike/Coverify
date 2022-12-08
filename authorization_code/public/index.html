@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>Example of the Authorization Code flow with Spotify</title>
+    <title>Coverify Beginnings</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <style type="text/css">
       #login, #loggedin {
@@ -19,11 +19,13 @@
   <body>
     <div class="container">
       <div id="login">
-        <h1>This is an example of the Authorization Code flow</h1>
+        <h1>Coverify Beginnings</h1>
         <a href="/login" class="btn btn-primary">Log in with Spotify</a>
       </div>
       <div id="loggedin">
         <div id="user-profile">
+        </div>
+        <div id="user-top">
         </div>
         <div id="oauth">
         </div>
@@ -31,7 +33,7 @@
       </div>
     </div>
 
-    <script id="user-profile-template" type="text/x-handlebars-template">
+    <!-- <script id="user-profile-template" type="text/x-handlebars-template">
       <h1>Logged in as {{display_name}}</h1>
       <div class="media">
         <div class="pull-left">
@@ -49,6 +51,10 @@
           </dl>
         </div>
       </div>
+    </script> -->
+
+    <script id="user-top-artists" type="text/x-handlebars-template">
+      <p>{{items}}</p>
     </script>
 
     <script id="oauth-template" type="text/x-handlebars-template">
@@ -78,9 +84,9 @@
           return hashParams;
         }
 
-        var userProfileSource = document.getElementById('user-profile-template').innerHTML,
-            userProfileTemplate = Handlebars.compile(userProfileSource),
-            userProfilePlaceholder = document.getElementById('user-profile');
+        var userTopTracksSource = document.getElementById('user-top-artists').innerHTML,
+            userTopTracksTemplate = Handlebars.compile(userTopTracksSource),
+            userProfilePlaceholder = document.getElementById('user-top');
 
         var oauthSource = document.getElementById('oauth-template').innerHTML,
             oauthTemplate = Handlebars.compile(oauthSource),
@@ -103,13 +109,13 @@
             });
 
             $.ajax({
-                url: 'https://api.spotify.com/v1/me',
+                url: 'https://api.spotify.com/v1/me/top/tracks',
                 headers: {
                   'Authorization': 'Bearer ' + access_token
                 },
                 success: function(response) {
-                  userProfilePlaceholder.innerHTML = userProfileTemplate(response);
-
+                  userProfilePlaceholder.innerHTML = userTopTracksTemplate(response);
+                  console.log(response)
                   $('#login').hide();
                   $('#loggedin').show();
                 }
