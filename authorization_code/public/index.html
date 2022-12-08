@@ -2,6 +2,8 @@
 <html>
   <head>
     <title>Coverify Beginnings</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <style type="text/css">
       #login, #loggedin {
@@ -25,7 +27,9 @@
       <div id="loggedin">
         <div id="user-profile">
         </div>
-        <div id="user-top">
+        <div id="user-top-tracks">
+        </div>
+        <div id="user-top-artists">
         </div>
         <div id="oauth">
         </div>
@@ -53,10 +57,16 @@
       </div>
     </script>
 
-    <script id="user-top-artists" type="text/x-handlebars-template">
+    <script id="user-top-tracks-details" type="text/x-handlebars-template">
       <h1>Top Songs Over Past 6 Months</h1>  
-      <div id ="exampleTop"></div>
+      <div id ="exampleTopTracks"></div>
     </script>
+
+    <script id="user-top-artists-details" type="text/x-handlebars-template">
+      <h1>Top Artists Over Past 6 Months</h1>  
+      <div id ="exampleTopArtists"></div>
+    </script>
+
 
     <script id="oauth-template" type="text/x-handlebars-template">
       <h2>oAuth info</h2>
@@ -66,8 +76,6 @@
       </dl>
     </script>
 
-    <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
-    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script>
       (function() {
 
@@ -101,6 +109,7 @@
 
           getTopTracks(access_token);
           getUserProfile(access_token);
+          getUserTopArtists(access_token)
 
           document.getElementById('obtain-new-token').addEventListener('click', function() {
             $.ajax({
@@ -127,9 +136,9 @@
 
         //top tracks API call
         function getTopTracks(access_token){
-          var userTopTracksSource = document.getElementById('user-top-artists').innerHTML,
+          var userTopTracksSource = document.getElementById('user-top-tracks-details').innerHTML,
             userTopTracksTemplate = Handlebars.compile(userTopTracksSource),
-            userTopTrackPlaceholder = document.getElementById('user-top');
+            userTopTrackPlaceholder = document.getElementById('user-top-tracks');
 
                 $.ajax({
                     url: 'https://api.spotify.com/v1/me/top/tracks',
@@ -165,9 +174,29 @@
                       $('#loggedin').show();
                     }
                 });
-              } 
+        } 
   
+        //User profile API call
+        function getUserTopArtists(access_token){
+          var userTopArtistsSource = document.getElementById('user-top-artists-details').innerHTML,
+            userTopArtistsTemplate = Handlebars.compile(userTopArtistsSource),
+            userTopArtistsPlaceholder = document.getElementById('user-top-artists');
 
+                $.ajax({
+                    url: 'https://api.spotify.com/v1/me/top/artists/',
+                    headers: {
+                      'Authorization': 'Bearer ' + access_token
+                    },
+                    success: function(response) {
+                      let topTracks= JSON.stringify(response)
+                      userTopArtistsPlaceholder.innerHTML = userTopArtistsTemplate(topTracks);
+                      console.log(response)
+                      parseTopArtistsJSON(response.items)
+                      $('#login').hide();
+                      $('#loggedin').show();
+                    }
+                });
+        } 
         
         function getHashParams() {
           var hashParams = {};
@@ -181,7 +210,7 @@
         
         //Parsing through JSON Array of top tracks
         function parseTopTracksJSON(data){
-          var mainContainer = document.getElementById("exampleTop");
+          var mainContainer = document.getElementById("exampleTopTracks");
           let userTotalPopularity = 0
           let overallTotalPopularity = 0
 
@@ -200,7 +229,7 @@
                             artistName = artistName + ', ' + tempArtistName.toString()
                           }
                       }
-                    div.innerHTML = 'Name: ' + data[i].name + 'Artist(s): ' + artistName + ' Popularity: ' + data[i].popularity + '/100'
+                    div.innerHTML = 'Name: ' + data[i].name + ' Artist(s): ' + artistName + ' Popularity: ' + data[i].popularity + '/100'
                     let popularity= data[i].popularity
                     userTotalPopularity += popularity;
 
@@ -211,10 +240,32 @@
                   userTotalPopularity = userTotalPopularity/data.length
                   overallTotalPopularity = overallTotalPopularity/data.length
 
-                  div.innerHTML = 'Overall Popularity: ' + userTotalPopularity + ' / ' + overallTotalPopularity
+                  div.innerHTML = 'Overall Popularity Index: ' + userTotalPopularity + ' / ' + overallTotalPopularity
                   mainContainer.appendChild(div);
         }
 
+        function parseTopArtistsJSON(data){
+          var mainContainer = document.getElementById("exampleTopArtists");
+          let userTotalPopularity = 0
+          let overallTotalPopularity = 0
+
+                  for (var i = 0; i < data.length; i++) {
+                    var div = document.createElement("div");
+
+                    div.innerHTML = 'Artist Name: ' + data[i].name + ' Genre(s): ' + data[i].genres + ' Popularity: ' + data[i].popularity + '/100'
+                    let popularity= data[i].popularity
+                    userTotalPopularity += popularity;
+
+                    overallTotalPopularity += 100;
+                    mainContainer.appendChild(div);
+                    console.log(div)
+                  }
+                  userTotalPopularity = userTotalPopularity/data.length
+                  overallTotalPopularity = overallTotalPopularity/data.length
+
+                  div.innerHTML = 'Overall Popularity Index: ' + userTotalPopularity + ' / ' + overallTotalPopularity
+                  mainContainer.appendChild(div);
+        }
     </script>
   </body>
 </html>
