@@ -1,0 +1,70 @@
+
+      function getAPIs(access_token, term) {
+            $('#loggedin').show();
+            getUserProfile(access_token)
+            getTopTracks(access_token, term)
+            getUserTopArtists(access_token, term)
+      }
+
+      //User profile API call
+      function getUserProfile(access_token){
+              $.ajax({
+                  url: 'https://api.spotify.com/v1/me/',
+                  headers: {
+                    'Authorization': 'Bearer ' + access_token
+                  },
+                  success: function(response) {
+                    console.log(document.getElementById('user-profile-template'));
+                    let userProfileSource = document.getElementById('user-profile-template').innerHTML,
+                    userProfileTemplate = Handlebars.compile(userProfileSource),
+                    userProfilePlaceholder = document.getElementById('user-profile');
+                    
+                    userProfilePlaceholder.innerHTML = userProfileTemplate(response);
+                    console.log(response)
+                    $('#selectionsComplete').show();
+                  }
+              });
+      } 
+
+      //top tracks API call
+      function getTopTracks(access_token, term){
+              $.ajax({
+                  url: 'https://api.spotify.com/v1/me/top/tracks?limit=50&time_range='+ term,
+                  headers: {
+                    'Authorization': 'Bearer ' + access_token
+                  },
+                  success: function(response) {
+                    console.log(document.getElementById('user-top-tracks-details'));
+                    let userTopTracksSource = document.getElementById('user-top-tracks-details').innerHTML,
+                    userTopTracksTemplate = Handlebars.compile(userTopTracksSource),
+                    userTopTrackPlaceholder = document.getElementById('user-top-tracks');
+
+                    userTopTrackPlaceholder.innerHTML = userTopTracksTemplate(response);
+                    console.log(response)
+                    findPopularityTracksJSON(response.items)
+                    $('#selectionsComplete').show();
+                  }
+              });
+        }
+
+      //User profile API call
+      function getUserTopArtists(access_token, term){
+              $.ajax({
+                  url: 'https://api.spotify.com/v1/me/top/artists?limit=50&time_range='+ term,
+                  headers: {
+                    'Authorization': 'Bearer ' + access_token
+                  },
+                  success: function(response) {
+                    console.log(document.getElementById('user-top-artists-details'));
+                    let userTopArtistsSource = document.getElementById('user-top-artists-details').innerHTML,
+                    userTopArtistsTemplate = Handlebars.compile(userTopArtistsSource),
+                    userTopArtistsPlaceholder = document.getElementById('user-top-artists');
+          
+                    userTopArtistsPlaceholder.innerHTML = userTopArtistsTemplate(response);
+                    console.log(response)
+                    findPopularityArtistsJSON(response.items)
+                    findGenresJSON(response.items)
+                    $('#selectionsComplete').show();
+                  }
+              });
+      } 

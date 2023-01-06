@@ -1,272 +1,115 @@
+<!-- CSS FROM: https://codepen.io/silkine/embed/QWBxVX?default-tab=result&height=316&theme-id=0 -->
+
 <!doctype html>
 <html>
-  <head>
-    <title>Coverify Beginnings</title>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
-    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-    <style type="text/css">
-      #login, #loggedin {
-        display: none;
-      }
-      .text-overflow {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        width: 500px;
-      }
-    </style>
-  </head>
 
-  <body>
-    <div class="container">
-      <div id="login">
-        <h1>Coverify Beginnings</h1>
-        <a href="/login" class="btn btn-primary">Log in with Spotify</a>
+<head>
+  <title>Coverify Beginnings</title>
+  <link rel="stylesheet" href="./style.css">
+  <link
+    href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900,400italic,700italic,900italic|Droid+Serif:400,700,400italic,700italic'
+    rel='stylesheet' type='text/css'>
+  <meta name="viewport" content="width=device-width">
+</head>
+
+<body>
+  <div class="container">
+    <div id="login">
+      <h1>Coverifys Beginnings</h1>
+      <a href="/login" class="btn btn-primary">Log in with Spotify</a>
+    </div>
+    <div id="loggedin">
+      <div id="termOptions">
+        <button id="short_term" value="short_term">Last Month</button>
+        <button id="medium_term" value="medium_term">Last 6 Months</button>
+        <button id="long_term" value="long_term">All Time</button>
       </div>
-      <div id="loggedin">
-        <div id="user-profile">
+      <!-- begin magazine -->
+      <div id="selectionsComplete">
+        <div class="head">
+          <div class="headerobjectswrapper">
+            <header id="mostListenedToGenre"></header>
+          </div>
+          <div id="user-profile">
+            <script defer id="user-profile-template" type="text/x-handlebars-template">
+              <div class="subhead">
+              <span class="headline hl11">All About {{display_name}}</span><br>
+              <img src="{{images.0.url}}">
+            </script>
+          </div>
         </div>
-        <div id="user-top-tracks">
-        </div>
-        <div id="user-top-artists">
+        <div class="content">
+          <div class="collumns">
+            <div class="collumn">
+              <div id="user-top-tracks">
+                <script defer id="user-top-tracks-details" type="text/x-handlebars-template">
+                <div class="head">
+                  <span class="headline hl3">Top Songs Over Selected Period</span>
+                </div>                  
+                {{#topItemsInResults 0 5 items}}
+                    <img src="{{this.album.images.0.url}}" style="height: 110px; width: 110px">
+                    <h3>{{this.name}}</h3>
+                    <p>{{this.artists.0.name}}</p>
+                  {{/topItemsInResults}}
+                </script>
+              </div>
+            </div>
+            <div class="collumn">
+              <div id="user-top-artists">
+                <script defer id="user-top-artists-details" type="text/x-handlebars-template">
+                <div class="head">
+                  <span id class="headline hl3">Top Artists Over Selected Period</span>
+                </div>                  
+                {{#topItemsInResults 0 5 items}}
+                    <img src="{{this.images.0.url}}" style="height: 110px; width: 110px">
+                    <h3>{{this.name}}</h3>
+                    <p>{{this.genres}}</p>
+                  {{/topItemsInResults}}
+                </script>
+              </div>
+            </div>
+            <div class="collumn">
+              <div class="head">
+                <span class="headline hl3">Overall Track Popularity Index</span>
+              </div>
+              <div id="topTracksPopularity">
+              </div>
+              <div class="head">
+                <span class="headline hl3">Overall Artist Popularity Index</span>
+              </div>
+              <div id="topArtistsPopularity">
+              </div>
+              <div class="head">
+                <span class="headline hl3">Most Listened to Genres</span>
+              </div>
+              <div id="topGenres">
+              </div>
+            </div>
+          </div>
         </div>
         <div id="oauth">
         </div>
         <button class="btn btn-default" id="obtain-new-token">Obtain new token using the refresh token</button>
       </div>
     </div>
+  </div>
 
-    <script id="user-profile-template" type="text/x-handlebars-template">
-      <h1>Logged in as {{display_name}}</h1>
-      <div class="media">
-        <div class="pull-left">
-          <img class="media-object" width="150" src="{{images.0.url}}" />
-        </div>
-        <div class="media-body">
-          <dl class="dl-horizontal">
-            <dt>Display name</dt><dd class="clearfix">{{display_name}}</dd>
-            <dt>Id</dt><dd>{{id}}</dd>
-            <dt>Email</dt><dd>{{email}}</dd>
-            <dt>Spotify URI</dt><dd><a href="{{external_urls.spotify}}">{{external_urls.spotify}}</a></dd>
-            <dt>Link</dt><dd><a href="{{href}}">{{href}}</a></dd>
-            <dt>Profile Image</dt><dd class="clearfix"><a href="{{images.0.url}}">{{images.0.url}}</a></dd>
-            <dt>Country</dt><dd>{{country}}</dd>
-          </dl>
-        </div>
-      </div>
-    </script>
+  <script id="oauth-template" type="text/x-handlebars-template">
+    <h2>oAuth info</h2>
+        <dl class="dl-horizontal">
+          <dt>Access token</dt><dd class="text-overflow">{{access_token}}</dd>
+          <dt>Refresh token</dt><dd class="text-overflow">{{refresh_token}}</dd>
+        </dl>
+      </script>
+  </div>
+</body>
 
-    <script id="user-top-tracks-details" type="text/x-handlebars-template">
-      <h1>Top Songs Over Past 6 Months</h1>  
-      <div id ="exampleTopTracks"></div>
-    </script>
+<!-- All JavaScript files -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script src="./apiCalls.js"></script>
+<script src="./handleJSON.js"></script>
+<script src="./helperFunctions.js"></script>
+<script src="./documentOnload.js"></script>
 
-    <script id="user-top-artists-details" type="text/x-handlebars-template">
-      <h1>Top Artists Over Past 6 Months</h1>  
-      <div id ="exampleTopArtists"></div>
-    </script>
-
-
-    <script id="oauth-template" type="text/x-handlebars-template">
-      <h2>oAuth info</h2>
-      <dl class="dl-horizontal">
-        <dt>Access token</dt><dd class="text-overflow">{{access_token}}</dd>
-        <dt>Refresh token</dt><dd class="text-overflow">{{refresh_token}}</dd>
-      </dl>
-    </script>
-
-    <script>
-      (function() {
-
-        /**
-         * Obtains parameters from the hash of the URL
-         * @return Object
-         */
-
-
-
-         var params = getHashParams();
-
-        var oauthSource = document.getElementById('oauth-template').innerHTML,
-            oauthTemplate = Handlebars.compile(oauthSource),
-            oauthPlaceholder = document.getElementById('oauth');
-
-        var access_token = params.access_token,
-            refresh_token = params.refresh_token,
-            error = params.error;
-
-        if (error) {
-          alert('There was an error during the authentication');
-        } else {
-          if (access_token) {
-            // render oauth info
-            oauthPlaceholder.innerHTML = oauthTemplate({
-              access_token: access_token,
-              refresh_token: refresh_token
-            });
-
-
-          getTopTracks(access_token);
-          getUserProfile(access_token);
-          getUserTopArtists(access_token)
-
-          document.getElementById('obtain-new-token').addEventListener('click', function() {
-            $.ajax({
-              url: '/refresh_token',
-              data: {
-                'refresh_token': refresh_token
-              }
-            }).done(function(data) {
-              access_token = data.access_token;
-              oauthPlaceholder.innerHTML = oauthTemplate({
-                access_token: access_token,
-                refresh_token: refresh_token
-              });
-            });
-          }, false);
-
-        } else {
-                  // render initial screen
-                  $('#login').show();
-                  $('#loggedin').hide();
-              }
-        }
-        })()
-
-        //top tracks API call
-        function getTopTracks(access_token){
-          var userTopTracksSource = document.getElementById('user-top-tracks-details').innerHTML,
-            userTopTracksTemplate = Handlebars.compile(userTopTracksSource),
-            userTopTrackPlaceholder = document.getElementById('user-top-tracks');
-
-                $.ajax({
-                    url: 'https://api.spotify.com/v1/me/top/tracks',
-                    headers: {
-                      'Authorization': 'Bearer ' + access_token
-                    },
-                    success: function(response) {
-                      let topTracks= JSON.stringify(response)
-                      userTopTrackPlaceholder.innerHTML = userTopTracksTemplate(topTracks);
-                      console.log(response)
-                      console.log(response.items.length)
-                      parseTopTracksJSON(response.items)
-                      $('#login').hide();
-                      $('#loggedin').show();
-                    }
-                });
-          }
-
-        //User profile API call
-        function getUserProfile(access_token){
-          var userProfileSource = document.getElementById('user-profile-template').innerHTML,
-            userProfileTemplate = Handlebars.compile(userProfileSource),
-            userProfilePlaceholder = document.getElementById('user-profile');
-
-                $.ajax({
-                    url: 'https://api.spotify.com/v1/me/',
-                    headers: {
-                      'Authorization': 'Bearer ' + access_token
-                    },
-                    success: function(response) {
-                      userProfilePlaceholder.innerHTML = userProfileTemplate(response);
-                      $('#login').hide();
-                      $('#loggedin').show();
-                    }
-                });
-        } 
-  
-        //User profile API call
-        function getUserTopArtists(access_token){
-          var userTopArtistsSource = document.getElementById('user-top-artists-details').innerHTML,
-            userTopArtistsTemplate = Handlebars.compile(userTopArtistsSource),
-            userTopArtistsPlaceholder = document.getElementById('user-top-artists');
-
-                $.ajax({
-                    url: 'https://api.spotify.com/v1/me/top/artists/',
-                    headers: {
-                      'Authorization': 'Bearer ' + access_token
-                    },
-                    success: function(response) {
-                      let topTracks= JSON.stringify(response)
-                      userTopArtistsPlaceholder.innerHTML = userTopArtistsTemplate(topTracks);
-                      console.log(response)
-                      parseTopArtistsJSON(response.items)
-                      $('#login').hide();
-                      $('#loggedin').show();
-                    }
-                });
-        } 
-        
-        function getHashParams() {
-          var hashParams = {};
-          var e, r = /([^&;=]+)=?([^&;]*)/g,
-              q = window.location.hash.substring(1);
-          while ( e = r.exec(q)) {
-             hashParams[e[1]] = decodeURIComponent(e[2]);
-          }
-          return hashParams;
-        }
-        
-        //Parsing through JSON Array of top tracks
-        function parseTopTracksJSON(data){
-          var mainContainer = document.getElementById("exampleTopTracks");
-          let userTotalPopularity = 0
-          let overallTotalPopularity = 0
-
-                  for (var i = 0; i < data.length; i++) {
-                    var div = document.createElement("div");
-                    let artistObject= data[i].artists
-                    let artist = artistObject[0]
-                    let artistName 
-                      for (var j = 0; j < artistObject.length; j++) {
-                        let artist = artistObject[j]
-                        let tempArtistName = artist.name
-                          if(j == 0){
-                           artistName = tempArtistName.toString()
-                          }
-                          else{
-                            artistName = artistName + ', ' + tempArtistName.toString()
-                          }
-                      }
-                    div.innerHTML = 'Name: ' + data[i].name + ' Artist(s): ' + artistName + ' Popularity: ' + data[i].popularity + '/100'
-                    let popularity= data[i].popularity
-                    userTotalPopularity += popularity;
-
-                    overallTotalPopularity += 100;
-                    mainContainer.appendChild(div);
-                    console.log(div)
-                  }
-                  userTotalPopularity = userTotalPopularity/data.length
-                  overallTotalPopularity = overallTotalPopularity/data.length
-
-                  div.innerHTML = 'Overall Popularity Index: ' + userTotalPopularity + ' / ' + overallTotalPopularity
-                  mainContainer.appendChild(div);
-        }
-
-        function parseTopArtistsJSON(data){
-          var mainContainer = document.getElementById("exampleTopArtists");
-          let userTotalPopularity = 0
-          let overallTotalPopularity = 0
-
-                  for (var i = 0; i < data.length; i++) {
-                    var div = document.createElement("div");
-
-                    div.innerHTML = 'Artist Name: ' + data[i].name + ' Genre(s): ' + data[i].genres + ' Popularity: ' + data[i].popularity + '/100'
-                    let popularity= data[i].popularity
-                    userTotalPopularity += popularity;
-
-                    overallTotalPopularity += 100;
-                    mainContainer.appendChild(div);
-                    console.log(div)
-                  }
-                  userTotalPopularity = userTotalPopularity/data.length
-                  overallTotalPopularity = overallTotalPopularity/data.length
-
-                  div.innerHTML = 'Overall Popularity Index: ' + userTotalPopularity + ' / ' + overallTotalPopularity
-                  mainContainer.appendChild(div);
-        }
-    </script>
-  </body>
 </html>
-
