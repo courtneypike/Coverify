@@ -25,6 +25,9 @@ window.onload = function (){
         "click",
         function () {
             reload_js("./apiCalls.js")
+            reloadScript('user-profile-template')
+            reloadScript('user-top-tracks-details')
+            reloadScript('user-top-tracks-details')
             window.onload = getAPIs(access_token, "short_term") 
         },
         false
@@ -33,6 +36,9 @@ window.onload = function (){
         "click",
         function () {
             reload_js("./apiCalls.js")
+            reloadScript('user-profile-template')
+            reloadScript('user-top-tracks-details')
+            reloadScript('user-top-tracks-details')
             window.onload = getAPIs(access_token, "medium_term") 
         },
         false
@@ -41,6 +47,9 @@ window.onload = function (){
         "click",
         function () {
             reload_js("./apiCalls.js")
+            reloadScript('user-profile-template')
+            reloadScript('user-top-tracks-details')
+            reloadScript('user-top-tracks-details')
             window.onload = getAPIs(access_token, "long_term");
         },
         false

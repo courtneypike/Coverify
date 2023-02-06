@@ -38,3 +38,11 @@ function reload_js(src) {
     $('script[src="' + src + '"]').remove();
     $('<script>').attr('src', src).appendTo('head');
 }
+
+function reloadScript(scriptTag) {
+    with(document) {
+     let newscr = createElement(scriptTag);
+     let tempHTML = '<p>temp</p'
+     tempHTML = document.getElementById(scriptTag).innerHTML 
+    }
+   }
