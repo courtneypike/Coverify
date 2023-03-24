@@ -40,9 +40,34 @@ function reload_js(src) {
 }
 
 function reloadScript(scriptTag) {
-    with(document) {
-     let newscr = createElement(scriptTag);
-     let tempHTML = '<p>temp</p'
-     tempHTML = document.getElementById(scriptTag).innerHTML 
+    if(document.getElementById(scriptTag) == null){
+    var scriptElement = document.createElement('script');
+    scriptElement.id = scriptTag;
+    if(scriptTag == 'user-profile-template'){
+        scriptElement.innerHTML = `<div class="subhead">
+        <span class="headline hl11">All About {{display_name}}</span><br>
+        <img src="{{images.0.url}}">`
+    }
+    if(scriptTag == 'user-top-tracks-details'){
+        scriptElement.innerHTML = `<div class="head">
+        <span class="headline hl3">Top Songs Over Selected Period</span>
+      </div>                  
+      {{#topItemsInResults 0 5 items}}
+          <img src="{{this.album.images.0.url}}" style="height: 110px; width: 110px">
+          <h3>{{this.name}}</h3>
+          <p>{{this.artists.0.name}}</p>
+        {{/topItemsInResults}}`
+    }
+    if(scriptTag == 'user-top-artists-details'){
+        scriptElement.innerHTML = `<div class="head">
+        <span id class="headline hl3">Top Artists Over Selected Period</span>
+      </div>                  
+      {{#topItemsInResults 0 5 items}}
+          <img src="{{this.images.0.url}}" style="height: 110px; width: 110px">
+          <h3>{{this.name}}</h3>
+          <p>{{this.genres}}</p>
+        {{/topItemsInResults}}`
+    }
+    document.head.appendChild(scriptElement);
     }
    }

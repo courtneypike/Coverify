@@ -1,6 +1,7 @@
       //Parsing through JSON Array of top tracks and appending it to div
       function findPopularityTracksJSON(data){
         var mainContainer = document.getElementById("topTracksPopularity");
+        mainContainer.innerHTML = ''
         let userTotalPopularity = 0
         let overallTotalPopularity = 0
         let div 
@@ -21,6 +22,7 @@
       //Parsing through JSON Array of tosp artists and appending it to div
       function findPopularityArtistsJSON(data){
         var mainContainer = document.getElementById("topArtistsPopularity");
+        mainContainer.innerHTML = ''
         let userTotalPopularity = 0
         let overallTotalPopularity = 0
         let div = document.createElement("div");
@@ -37,8 +39,10 @@
 
       function findGenresJSON(data){
           let titleMainContainer = document.getElementById("mostListenedToGenre");
+          titleMainContainer.innerHTML = ''
           let titleDiv = document.createElement("div");
           let mainContainer = document.getElementById("topGenres");
+          mainContainer.innerHTML = ''
           let div = document.createElement("div");
           let allGenres = []
 
@@ -58,7 +62,6 @@
               }
             };
 
-          console.log(counter)
           topGenres = pickHighestAndSort(counter,5)
           let genre
           let firstGenre
