@@ -28,7 +28,9 @@ window.onload = function (){
             reloadScript('user-profile-template')
             reloadScript('user-top-tracks-details')
             reloadScript('user-top-artists-details')
-            window.onload = getAPIs(access_token, "short_term") 
+            window.onload = getAPIs(access_token, "short_term")
+            let termPlaceholder = document.getElementById('displayTerm')
+            termPlaceholder.innerHTML = `<p>Past Month</p>`
         },
         false
       );
@@ -40,6 +42,8 @@ window.onload = function (){
             reloadScript('user-top-tracks-details')
             reloadScript('user-top-artists-details')
             window.onload = getAPIs(access_token, "medium_term") 
+            let termPlaceholder = document.getElementById('displayTerm')
+            termPlaceholder.innerHTML = `<p>Past 6 Months</p>`
         },
         false
       );
@@ -50,7 +54,9 @@ window.onload = function (){
             reloadScript('user-profile-template')
             reloadScript('user-top-tracks-details')
             reloadScript('user-top-artists-details')
-            window.onload = getAPIs(access_token, "long_term");
+            window.onload = getAPIs(access_token, "long_term")
+            let termPlaceholder = document.getElementById('displayTerm')
+            termPlaceholder.innerHTML = `<p>All Time</p>`
         },
         false
       );

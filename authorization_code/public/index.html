@@ -1,14 +1,15 @@
-<!-- CSS FROM: https://codepen.io/silkine/embed/QWBxVX?default-tab=result&height=316&theme-id=0 -->
-
 <!doctype html>
 <html>
 
 <head>
-  <title>Coverify Beginnings</title>
+  <title>Coverify</title>
+  <link href="https://fonts.cdnfonts.com/css/they-call-me-lazy-thinbold" rel="stylesheet">
   <link rel="stylesheet" href="./style.css">
   <link
     href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900,400italic,700italic,900italic|Droid+Serif:400,700,400italic,700italic'
     rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
   <meta name="viewport" content="width=device-width">
 </head>
 
@@ -19,88 +20,122 @@
       <a href="/login" class="btn btn-primary">Log in with Spotify</a>
     </div>
     <div id="loggedin">
-      <div id="termOptions">
-        <button id="short_term" value="short_term">Last Month</button>
-        <button id="medium_term" value="medium_term">Last 6 Months</button>
-        <button id="long_term" value="long_term">All Time</button>
+      <div id="termOptions" style ="align-content: center;">
+        <button id="short_term" value="short_term" class ="time-btn">Last Month</button>
+        <button id="medium_term" value="medium_term" class ="time-btn">Last 6 Months</button>
+        <button id="long_term" value="long_term" class ="time-btn">All Time</button>
       </div>
       <!-- begin magazine -->
-      <div id="selectionsComplete">
-        <div class="head">
-          <div class="headerobjectswrapper">
-            <header id="mostListenedToGenre"></header>
+      <div id="selectionsComplete" class = "paper">
+        <div class="head container" id = "cover" style ="padding-right: 0px;padding-left: 0px;">
+            <div id="user-profile" class = "funBorder">
+              <div class="headerobjectswrapper" id = "wrapper">
+                <script defer id="user-profile-template" type="text/x-handlebars-template">
+                    <div class="future-cop">
+                      <p class="future" id="mostListenedToGenre" style = "float: left;">
+                      </p>
+                  </div>
+                <div class ="row" style ="margin-right: 0px; margin-left: 0px">
+                  <div class ="col" style ="margin-right: 0px; margin-left: 0px">
+                  <div>
+                    <a href ="{{this.external_urls.spotify}}" target="_blank">
+                      <img id = "profilePic" src="{{images.0.url}}" class="box box3">
+                      </a>
+                  </div>
+                    </div>  
+                  <div class ="col" style ="margin-right: 0px; margin-left: 0px; width:100%">
+                    <p class= "all-about-name" id ="topGenresBox">
+                      <a href ="{{this.external_urls.spotify}}" target="_blank" style ="color: #EB219B;">
+                      {{display_name}}
+                      </a>
+                    </p>
+                      <div class ="row" style="text-align: center; margin-right: 15px; margin-left: 15px; ">
+                        <div class ="row" id ="topGenresBox">
+                          <h3 id ="colHead" style="width:100%">Most Listened to Genres
+                            <div id="topGenres">
+                            </div>
+                          </h3>
+                        </div>
+                      </div>
+                      </div>
+                    </div>
+                </script> 
+            </div>
           </div>
-          <div id="user-profile">
-            <script defer id="user-profile-template" type="text/x-handlebars-template">
-              <div class="subhead">
-              <span class="headline hl11">All About {{display_name}}</span><br>
-              <img src="{{images.0.url}}">
-            </script>
-          </div>
-        </div>
-        <div class="content">
-          <div class="collumns">
-            <div class="collumn">
+          <div id ="displayTerm">
+          </div>  
+        <div class="content" style="height:auto;">  
+          <div class="collumns" style="height:auto;">
+            <div class="collumn col" style="width:100%;padding-right: 5px;padding-left: 5px;">
               <div id="user-top-tracks">
                 <script defer id="user-top-tracks-details" type="text/x-handlebars-template">
-                <div class="head">
-                  <span class="headline hl3">Top Songs Over Selected Period</span>
-                </div>                  
+                  <div class ="row">          
+                    <h3 id ="colHead">Your Overall Track Popularity
+                  </h3>
+                <div class = "col" id="topTracksPopularity">
+                </div>
+              </div>                
+              <h3 id ="colHead" >Top Songs</h3>
                 {{#topItemsInResults 0 5 items}}
-                    <img src="{{this.album.images.0.url}}" style="height: 110px; width: 110px">
-                    <h3>{{this.name}}</h3>
-                    <p>{{this.artists.0.name}}</p>
+                <figure style ="display:inline-block; margin-right: 0px; margin-left: 0px; padding:2px; margin: 0 0 0rem;">
+                  <a href ="{{this.external_urls.spotify}}" target="_blank">
+                    <img src="{{this.album.images.0.url}}" id ="covers" class="box box3">
+                  </a>                 
+                  <a href ="{{this.external_urls.spotify}}" target="_blank" style="color: black;">
+                    <figcaption style="padding:2px"><b>{{this.name}}</b> {{this.artists.0.name}}</figcaption>
+                </a>
                   {{/topItemsInResults}}
+                </figure>
                 </script>
-              </div>
+                </div>
             </div>
-            <div class="collumn">
+            <div class="collumn col" style="width:100%;padding-right: 5px;padding-left: 15px;">
               <div id="user-top-artists">
                 <script defer id="user-top-artists-details" type="text/x-handlebars-template">
-                <div class="head">
-                  <span id class="headline hl3">Top Artists Over Selected Period</span>
-                </div>                  
-                {{#topItemsInResults 0 5 items}}
-                    <img src="{{this.images.0.url}}" style="height: 110px; width: 110px">
-                    <h3>{{this.name}}</h3>
-                    <p>{{this.genres}}</p>
-                  {{/topItemsInResults}}
+                    <div class ="row">          
+                      <h3 id ="colHead">Your Overall Artist Popularity</h3>
+                      <div class = "col" id="topArtistsPopularity">
+                      </div>
+                    </div>                       
+                    <h3 id ="colHead">
+                      Top Artists
+                    </h3>
+                    {{#topItemsInResults 0 5 items}}
+                    <figure style ="display:inline-block; margin-right: 0px; margin-left: 0px; padding:2px; margin: 0 0 0rem;">
+                      <a href ="{{this.external_urls.spotify}}" target="_blank">
+                      <img src="{{this.images.0.url}}" id ="covers" class="box box3" style="float: right">    
+                      </a>               
+                      <a href ="{{this.external_urls.spotify}}" target="_blank" style="color: black;">
+                        <figcaption style="padding:2px"><b>{{this.name}}</b></figcaption>
+                      </a>
+                      {{/topItemsInResults}}
+                    </figure>   
                 </script>
               </div>
             </div>
-            <div class="collumn">
-              <div class="head">
-                <span class="headline hl3">Overall Track Popularity Index</span>
-              </div>
-              <div id="topTracksPopularity">
-              </div>
-              <div class="head">
-                <span class="headline hl3">Overall Artist Popularity Index</span>
-              </div>
-              <div id="topArtistsPopularity">
-              </div>
-              <div class="head">
-                <span class="headline hl3">Most Listened to Genres</span>
-              </div>
-              <div id="topGenres">
-              </div>
             </div>
-          </div>
         </div>
-        <div id="oauth">
-        </div>
+        <div id="oauth" style = "display: none;">
         <button class="btn btn-default" id="obtain-new-token">Obtain new token using the refresh token</button>
       </div>
+    <div>
+      <p id ="footer">Coverify</p>
+      <img src="./Spotify_Logo_RGB_Black.png" style="width:80px;height:auto"></img>
+    </div>
+
+    
+    <div id = "getNewToken" style = "display: none;">
+    <script id="oauth-template" type="text/x-handlebars-template">
+      <h2>oAuth info</h2>
+          <dl class="dl-horizontal">
+            <dt>Access token</dt><dd class="text-overflow">{{access_token}}</dd>
+            <dt>Refresh token</dt><dd class="text-overflow">{{refresh_token}}</dd>
+          </dl>
+        </script>
     </div>
   </div>
-
-  <script id="oauth-template" type="text/x-handlebars-template">
-    <h2>oAuth info</h2>
-        <dl class="dl-horizontal">
-          <dt>Access token</dt><dd class="text-overflow">{{access_token}}</dd>
-          <dt>Refresh token</dt><dd class="text-overflow">{{refresh_token}}</dd>
-        </dl>
-      </script>
+  </div>
+  </div>
   </div>
 </body>
 
