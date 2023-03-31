@@ -30,7 +30,7 @@ window.onload = function (){
             reloadScript('user-top-artists-details')
             window.onload = getAPIs(access_token, "short_term")
             let termPlaceholder = document.getElementById('displayTerm')
-            termPlaceholder.innerHTML = `<p>Past Month</p>`
+            termPlaceholder.innerHTML = `<p style ="margin-bottom: 0;">Past Month</p>`
         },
         false
       );
@@ -43,7 +43,7 @@ window.onload = function (){
             reloadScript('user-top-artists-details')
             window.onload = getAPIs(access_token, "medium_term") 
             let termPlaceholder = document.getElementById('displayTerm')
-            termPlaceholder.innerHTML = `<p>Past 6 Months</p>`
+            termPlaceholder.innerHTML = `<p style ="margin-bottom: 0;">Past 6 Months</p>`
         },
         false
       );
@@ -56,7 +56,7 @@ window.onload = function (){
             reloadScript('user-top-artists-details')
             window.onload = getAPIs(access_token, "long_term")
             let termPlaceholder = document.getElementById('displayTerm')
-            termPlaceholder.innerHTML = `<p>All Time</p>`
+            termPlaceholder.innerHTML = `<p style ="margin-bottom: 0;">All Time</p>`
         },
         false
       );

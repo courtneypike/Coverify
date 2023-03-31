@@ -58,15 +58,15 @@ function reloadScript(scriptTag) {
     </div>
       </div>  
     <div class ="col" style ="margin-right: 0px; margin-left: 0px; width:100%">
-      <p class= "all-about-name" id ="topGenresBox">
-        <a href ="{{this.external_urls.spotify}}" target="_blank" style ="color: #EB219B;">
+      <p class= "all-about-name" id ="topGenresBox" style ="margin-bottom: 0;"> 
+        <a href ="{{this.external_urls.spotify}}" target="_blank" style ="color: black;">
         {{display_name}}
         </a>
       </p>
         <div class ="row" style="text-align: center; margin-right: 15px; margin-left: 15px; ">
-          <div class ="row" id ="topGenresBox">
+          <div class ="row" id ="topGenresBox"  style="padding: 10px">
             <h3 id ="colHead" style="width:100%">Most Listened to Genres
-              <div id="topGenres">
+              <div id="topGenres" style ="font-family: 'Monoton', sans-serif; font-weight: bold;">
               </div>
             </h3>
           </div>
@@ -75,37 +75,30 @@ function reloadScript(scriptTag) {
       </div>`
     }
     if(scriptTag == 'user-top-tracks-details'){
-        scriptElement.innerHTML = `<div class ="row">          
-        <h3 id ="colHead">Your Overall Track Popularity
-      </h3>
-    <div class = "col" id="topTracksPopularity">
-    </div>
-  </div>                
-  <h3 id ="colHead" >Top Songs</h3>
-    {{#topItemsInResults 0 5 items}}
-    <figure style ="display:inline-block; margin-right: 0px; margin-left: 0px; padding:2px; margin: 0 0 0rem;">
-      <a href ="{{this.external_urls.spotify}}" target="_blank">
-        <img src="{{this.album.images.0.url}}" id ="covers" class="box box3">
-      </a>                 
-      <a href ="{{this.external_urls.spotify}}" target="_blank" style="color: black;">
-        <figcaption style="padding:2px"><b>{{this.name}}</b> {{this.artists.0.name}}</figcaption>
-    </a>
-      {{/topItemsInResults}}
-    </figure>`
+        scriptElement.innerHTML = `<div class = "col" id="topTracksPopularity">
+        </div>
+      <h3 id ="colHead" style="color:black">Top 5 Tracks</h3>
+        {{#topItemsInResults 0 5 items}}
+        <figure style ="display:inline-block; margin-right: 0px; margin-left: 0px; padding:2px; margin: 0 0 0rem;">
+          <a href ="{{this.external_urls.spotify}}" target="_blank">
+            <img src="{{this.album.images.0.url}}" id ="covers" class="box box3">
+          </a>                 
+          <a href ="{{this.external_urls.spotify}}" target="_blank" style="color: black;">
+            <figcaption style="padding:2px"><b>{{this.name}}</b> {{this.artists.0.name}}</figcaption>
+        </a>
+          {{/topItemsInResults}}
+        </figure>`
     }
     if(scriptTag == 'user-top-artists-details'){
-        scriptElement.innerHTML = `<div class ="row">          
-        <h3 id ="colHead">Your Overall Artist Popularity</h3>
-        <div class = "col" id="topArtistsPopularity">
+        scriptElement.innerHTML = `<div class = "col" id="topArtistsPopularity">
         </div>
-      </div>                       
-      <h3 id ="colHead">
-        Top Artists
+      <h3 id ="colHead" style="color:black">
+        Top 5 Artists
       </h3>
       {{#topItemsInResults 0 5 items}}
       <figure style ="display:inline-block; margin-right: 0px; margin-left: 0px; padding:2px; margin: 0 0 0rem;">
         <a href ="{{this.external_urls.spotify}}" target="_blank">
-        <img src="{{this.images.0.url}}" id ="covers" class="box box3" style="float: right">    
+        <img src="{{this.images.0.url}}" id ="covers" class="box box3" style="float: right; transform: rotate(-4deg)">    
         </a>               
         <a href ="{{this.external_urls.spotify}}" target="_blank" style="color: black;">
           <figcaption style="padding:2px"><b>{{this.name}}</b></figcaption>
