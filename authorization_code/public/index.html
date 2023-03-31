@@ -14,16 +14,34 @@
 </head>
 
 <body>
-
-<!-- Button code 
-<div class="buttons-container">
-  <button class="button-arounder">Hover Me</button>
-</div> -->
-
   <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="font-family: 'They call me Lazy Thinbold', sans-serif;">
+      <a class="navbar-brand" href="#">Coverify</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="#" >Spotify Magazine Cover<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Other Pages
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="./contact.html">Contact/About</a>
+              <a class="dropdown-item" href="./privacy.html">Privacy Policy</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <h1 id ="coverifyLogo">Coverify</h1>
+    <h4 id ="coverifySubhead">Turn your music streaming history into a magazine cover</h4>
     <div id="login">
-      <h1>Coverifys Beginnings</h1>
-      <a href="/login" class="btn btn-primary">Log in with Spotify</a>
+      <a href="/login" class="btn btn-primary" style="background-color:green">Log in with Spotify</a>
     </div>
     <div id="loggedin">
       <div id="termOptions" style ="align-content: center;">
@@ -152,4 +170,7 @@
 <script src="./helperFunctions.js"></script>
 <script src="./documentOnload.js"></script>
 
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </html>
