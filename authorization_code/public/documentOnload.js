@@ -1,3 +1,4 @@
+
 window.onload = function (){
     var params = getHashParams();
 
@@ -31,6 +32,7 @@ window.onload = function (){
             window.onload = getAPIs(access_token, "short_term")
             let termPlaceholder = document.getElementById('displayTerm')
             termPlaceholder.innerHTML = `<p style ="margin-bottom: 0;">Past Month</p>`
+            document.getElementById('download').setAttribute("style","display: inline")
         },
         false
       );
@@ -44,6 +46,8 @@ window.onload = function (){
             window.onload = getAPIs(access_token, "medium_term") 
             let termPlaceholder = document.getElementById('displayTerm')
             termPlaceholder.innerHTML = `<p style ="margin-bottom: 0;">Past 6 Months</p>`
+            document.getElementById('download').setAttribute("style","display: inline")
+
         },
         false
       );
@@ -57,6 +61,9 @@ window.onload = function (){
             window.onload = getAPIs(access_token, "long_term")
             let termPlaceholder = document.getElementById('displayTerm')
             termPlaceholder.innerHTML = `<p style ="margin-bottom: 0;">All Time</p>`
+            $('#download').show()
+            document.getElementById('download').setAttribute("style","display: inline")
+
         },
         false
       );
@@ -81,4 +88,5 @@ window.onload = function (){
               });
             });
           }, false);
-}
+
+        }

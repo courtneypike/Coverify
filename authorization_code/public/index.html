@@ -3,11 +3,11 @@
 
 <head>
   <title>Coverify</title>
-  <link href="https://fonts.cdnfonts.com/css/they-call-me-lazy-thinbold" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/they-call-me-lazy-thinbold" rel="stylesheet" crossorigin="anonymous">
   <link rel="stylesheet" href="./style.css">
   <link
     href='https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900,400italic,700italic,900italic|Droid+Serif:400,700,400italic,700italic'
-    rel='stylesheet' type='text/css'>
+    rel='stylesheet' type='text/css' crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
   <meta name="viewport" content="width=device-width">
@@ -30,6 +30,7 @@
               Other Pages
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="./problems.html">Common Problems</a>
               <a class="dropdown-item" href="./contact.html">Contact/About</a>
               <a class="dropdown-item" href="./privacy.html">Privacy Policy</a>
             </div>
@@ -49,8 +50,12 @@
         <button id="medium_term" value="medium_term" class ="time-btn">Past 6 Months</button>
         <button id="long_term" value="long_term" class ="time-btn">All Time</button>
       </div>
+      <div style ="align-items: center; justify-content: center;">
+        <button class="time-btn" id="download" style="display:none; ">Download Image</button>
+      </div>
       <!-- begin magazine -->
-      <div id="selectionsComplete" class = "paper">
+      <div id="selectionsComplete">
+      <div class = "paper">
         <div class="head container" id = "cover" style ="padding-right: 0px;padding-left: 0px;">
             <div id="user-profile" class = "funBorder">
               <div class="headerobjectswrapper" id = "wrapper">
@@ -159,6 +164,7 @@
   </div>
   </div>
   </div>
+</div>
   </div>
 </body>
 
@@ -169,8 +175,34 @@
 <script src="./handleJSON.js"></script>
 <script src="./helperFunctions.js"></script>
 <script src="./documentOnload.js"></script>
+<script src="./dom-to-image.min.js"></script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script>
+  document.getElementById('download').addEventListener('click', function() {
+  const scale = 2;
+  var node = document.getElementById('selectionsComplete');
+  let obj = {
+  height: node.innerHeight * scale,
+  style: {
+  transform: `scale(${scale}) translate(${node.innerWidth/ 2 / scale}px, ${node.innerHeight / 2 / scale}px)`
+  },
+  width: node.innerWidth * scale
+}
+domtoimage.toPng(node, obj)
+    .then((dataUrl) => {
+        var link = document.createElement('a');
+        link.download = 'Coverify.png';
+        link.href = dataUrl;
+        link.click();
+    })
+    .catch((error) => {
+    console.error('oops, something went wrong!', error);
+    });
+    }, false);
+  </script>
+
 </html>
