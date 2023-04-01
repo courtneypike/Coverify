@@ -299,8 +299,8 @@ p{
 
   .paper {
     background: #fff;
-    padding: 30px;
     position: relative;
+    padding-bottom: 10px;
   }
   
   .paper,
