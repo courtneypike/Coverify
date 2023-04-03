@@ -1,0 +1,5 @@
+[build]
+  functions = "authorization_code"
+
+[dev]
+  publish = "public"
