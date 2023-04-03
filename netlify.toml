@@ -1,5 +1,5 @@
 [build]
-  functions = "authorization_code"
+  functions = "functions-build"
 
 [dev]
   publish = "public"
