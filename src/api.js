@@ -17,13 +17,6 @@ var cookieParser = require('cookie-parser');
 var client_id = process.env.CLIENT_ID; // Your client id
 var client_secret = process.env.CLIENT_SECRET; // Your secret
 var redirect_uri = 'https://coverify.netlify.app/callback' | "http://localhost:8888/callback"; // Your redirect uri
-const bodyParser = require('body-parser');
-
-app.use(bodyParser);
-app.post('/updatestate', (req, res) => {
-  const newValue = updateDatabase(res.body);
-  res.json(newValue);
-});
 
 /**
  * Generates a random string containing numbers and letters
@@ -42,8 +35,7 @@ var generateRandomString = function(length) {
 
 var stateKey = 'spotify_auth_state';
 
-var app = express();
-
+// Create a router to handle routes
 const router = express.Router();
 
 // Define a route that responds with a JSON object when a GET request is made to the root path
@@ -53,10 +45,15 @@ router.get("/", (req, res) => {
   });
 });
 
-app
-  .use(express.static(__dirname + "/public"))
-  .use(cors())
-  .use(cookieParser());
+// Use the router to handle requests to the `/.netlify/functions/api` path
+app.use(`/.netlify/functions/api`, router);
+
+
+// app
+//   .use(express.static(__dirname + "/public"))
+//   .use(cors())
+//   .use(cookieParser());
+
 
 app.get('/login', function(req, res) {
 
