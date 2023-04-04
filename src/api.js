@@ -38,13 +38,6 @@ var stateKey = 'spotify_auth_state';
 // Create a router to handle routes
 const router = express.Router();
 
-// Define a route that responds with a JSON object when a GET request is made to the root path
-router.get("/", (req, res) => {
-  res.json({
-    hello: "hi!"
-  });
-});
-
 // Use the router to handle requests to the `/.netlify/functions/api` path
 app.use(`/.netlify/functions/api`, router);
 
@@ -55,7 +48,7 @@ app.use(`/.netlify/functions/api`, router);
 //   .use(cookieParser());
 
 
-app.get('/login', function(req, res) {
+router.get('/login', function(req, res) {
 
   var state = generateRandomString(16);
   res.cookie(stateKey, state);
@@ -72,7 +65,7 @@ app.get('/login', function(req, res) {
     }));
 });
 
-app.get('/callback', function(req, res) {
+router.get('/callback', function(req, res) {
 
   // your application requests refresh and access tokens
   // after checking the state parameter
@@ -134,7 +127,7 @@ app.get('/callback', function(req, res) {
   }
 });
 
-app.get('/refresh_token', function(req, res) {
+router.get('/refresh_token', function(req, res) {
 
   // requesting access token from refresh token
   var refresh_token = req.query.refresh_token;
