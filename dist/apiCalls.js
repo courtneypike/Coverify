@@ -1,8 +1,13 @@
 
       function getAPIs(access_token, term) {
             $('#loggedin').show();
+            console.log(access_token)
             getUserProfile(access_token)
+            console.log(access_token)
+
             getTopTracks(access_token, term)
+            console.log(access_token)
+
             getUserTopArtists(access_token, term)
       }
 
