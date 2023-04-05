@@ -27,15 +27,13 @@ const app = express();
 // Create a router to handle routes
 const router = express.Router();
 
+app.use(cors())
+app.use(cookieParser())
+
 // Use the router to handle requests to the `/.netlify/functions/api` path
   app.use(`/.netlify/functions/api`, router)
-    .use(cors())
-    .use(cookieParser());;
 
-// app
-//   .use(express.static(__dirname + "/public"))
-//   .use(cors())
-//   .use(cookieParser());
+
 /**
  *
  * Generates a random string containing numbers and letters
