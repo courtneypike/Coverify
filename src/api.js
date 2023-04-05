@@ -64,6 +64,7 @@ router.get('/login', function(req, res) {
 });
 
 router.get('/callback', function(req, res) {
+  console.log(req.query)
 
   // your application requests refresh and access tokens
   // after checking the state parameter
