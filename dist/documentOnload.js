@@ -70,7 +70,7 @@ window.onload = function (){
       // } 
     //   else {
     //           // render initial screen
-    //           $('#login').show();
+              $('#login').show();
     //           $('#loggedin').hide();
     //       }
     // }
