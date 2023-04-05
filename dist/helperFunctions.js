@@ -12,6 +12,7 @@ function getHashParams() {
     var hashParams = {};
     var e, r = /([^&;=]+)=?([^&;]*)/g,
         q = window.location.hash.substring(1);
+        console.log(q)
     while ( e = r.exec(q)) {
     hashParams[e[1]] = decodeURIComponent(e[2]);
     }
