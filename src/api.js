@@ -17,7 +17,7 @@ var cookieParser = require('cookie-parser');
 var client_id = process.env.CLIENT_ID; // Your client id
 var client_secret = process.env.CLIENT_SECRET; // Your secret
 
-var redirect_uri = 'https://coverify.netlify.app/.netlify/functions/api/' // Your redirect uri
+var redirect_uri = 'https://coverify.netlify.app/' // Your redirect uri
 
 var stateKey = 'spotify_auth_state';
 
@@ -26,10 +26,9 @@ const app = express();
 // Create a router to handle routes
 const router = express.Router();
 
-// Use the router to handle requests to the `/.netlify/functions/api` path
-app.use(`/.netlify/functions/api`, router);
+router.get('/', (req, res) => {
 
-
+})
 // app
 //   .use(express.static(__dirname + "/public"))
 //   .use(cors())
@@ -48,7 +47,6 @@ app.use(`/.netlify/functions/api`, router);
   }
   return text;
 };
-
 router.get('/login', function(req, res) {
 
   var state = generateRandomString(16);
@@ -141,6 +139,11 @@ router.get('/refresh_token', function(req, res) {
     },
     json: true
   };
+
+
+// Use the router to handle requests to the `/.netlify/functions/api` path
+app.use(`/.netlify/functions/api`, router);
+
 
   request.post(authOptions, function(error, response, body) {
     if (!error && response.statusCode === 200) {
