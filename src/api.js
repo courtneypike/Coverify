@@ -80,7 +80,8 @@ router.get('/callback', function(req, res) {
   if (state === null || state !== storedState) {
     res.redirect('/#' +
       querystring.stringify({
-        error: 'state_mismatch'
+        error: 'state_mismatch',
+        state: state
       }));
   } else {
     res.clearCookie(stateKey);
