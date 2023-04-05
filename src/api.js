@@ -48,7 +48,6 @@ router.get('/', (req, res) => {
   return text;
 };
 router.get('/login', function(req, res) {
-
   var state = generateRandomString(16);
   res.cookie(stateKey, state);
 
@@ -140,11 +139,6 @@ router.get('/refresh_token', function(req, res) {
     json: true
   };
 
-
-// Use the router to handle requests to the `/.netlify/functions/api` path
-app.use(`/.netlify/functions/api`, router);
-
-
   request.post(authOptions, function(error, response, body) {
     if (!error && response.statusCode === 200) {
       var access_token = body.access_token;
@@ -154,5 +148,8 @@ app.use(`/.netlify/functions/api`, router);
     }
   });
 });
+
+// Use the router to handle requests to the `/.netlify/functions/api` path
+app.use(`/.netlify/functions/api`, router);
 
 module.exports.handler = serverless(app);
