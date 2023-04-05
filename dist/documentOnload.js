@@ -11,7 +11,8 @@ window.onload = function (){
         error = params.error;
 
     if (error) {
-      alert('There was an error during the authentication. Please refresh the page and login again.');
+      // alert('There was an error during the authentication. Please refresh the page and login again.');
+      console.log(error)
     } else {
       if (access_token) {
         // render oauth info
