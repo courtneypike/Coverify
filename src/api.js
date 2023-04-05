@@ -52,7 +52,7 @@ router.get('/login', function(req, res) {
   res.cookie(stateKey, state);
 
   // your application requests authorization
-  var scope = 'user-top-read';
+  var scope = 'user-read-private user-read-email';
   res.redirect('https://accounts.spotify.com/authorize?' +
     querystring.stringify({
       response_type: 'code',
@@ -64,7 +64,6 @@ router.get('/login', function(req, res) {
 });
 
 router.get('/callback', function(req, res) {
-  console.log(req.query)
 
   // your application requests refresh and access tokens
   // after checking the state parameter
