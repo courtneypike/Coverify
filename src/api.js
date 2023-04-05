@@ -15,11 +15,9 @@ var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
 
 var client_id = process.env.CLIENT_ID; // Your client id
-console.log(process.env.CLIENT_ID)
 var client_secret = process.env.CLIENT_SECRET; // Your secret
-console.log(process.env.CLIENT_SECRET)
 
-var redirect_uri = 'https://coverify.netlify.app/callback' // Your redirect uri
+var redirect_uri = 'https://coverify.netlify.app/.netlify/functions/api/' // Your redirect uri
 
 var stateKey = 'spotify_auth_state';
 
