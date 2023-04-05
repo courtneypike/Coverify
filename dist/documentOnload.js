@@ -76,7 +76,7 @@ window.onload = function (){
 
   document.getElementById('obtain-new-token').addEventListener('click', function() {
             $.ajax({
-              url: '/.netlify/functions/api/refresh_token',
+              url: '/refresh_token',
               data: {
                 'refresh_token': refresh_token
               }
