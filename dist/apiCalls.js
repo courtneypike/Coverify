@@ -1,18 +1,15 @@
 
       function getAPIs(access_token, term) {
             $('#loggedin').show();
-            console.log(access_token)
             getUserProfile(access_token)
-            console.log(access_token)
-
             getTopTracks(access_token, term)
-            console.log(access_token)
-
             getUserTopArtists(access_token, term)
       }
 
       //User profile API call
       function getUserProfile(access_token){
+        console.log(access_token)
+
         try {
               $.ajax({
                   url: 'https://api.spotify.com/v1/me/',
@@ -36,6 +33,8 @@
 
       //top tracks API call
       function getTopTracks(access_token, term){
+        console.log(access_token)
+
         try {
               $.ajax({
                   url: 'https://api.spotify.com/v1/me/top/tracks?limit=50&time_range='+ term,
@@ -62,6 +61,8 @@
 
       //User profile API call
       function getUserTopArtists(access_token, term){
+        console.log(access_token)
+
         try{
               $.ajax({
                   url: 'https://api.spotify.com/v1/me/top/artists?limit=50&time_range='+ term,
