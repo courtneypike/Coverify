@@ -15,12 +15,12 @@ window.onload = function (){
     // } else {
       // if (access_token) {
         // render oauth info
-        oauthPlaceholder.innerHTML = oauthTemplate({
-          access_token: access_token,
-          refresh_token: refresh_token
-        });
-        $('#loggedin').show();
-        $('#termOptions').show();
+        // oauthPlaceholder.innerHTML = oauthTemplate({
+        //   access_token: access_token,
+        //   refresh_token: refresh_token
+        // });
+        // $('#loggedin').show();
+        // $('#termOptions').show();
 
       document.getElementById("short_term").addEventListener(
         "click",
@@ -67,7 +67,7 @@ window.onload = function (){
         },
         false
       );
-      } 
+      // } 
     //   else {
     //           // render initial screen
     //           $('#login').show();
