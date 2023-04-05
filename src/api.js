@@ -58,6 +58,10 @@ router.get('/login', function(req, res) {
   res.redirect('https://accounts.spotify.com/authorize?' +
     querystring.stringify({
       response_type: 'code',
+      client_id: client_id,
+      scope: scope,
+      redirect_uri: redirect_uri,
+      state: state,
     }));
 });
 
@@ -74,10 +78,6 @@ router.get('/callback', function(req, res) {
     res.redirect('/#' +
       querystring.stringify({
         error: 'state_mismatch',
-        state: state,
-        code: code,
-        storedState: storedState,
-        req: req
       }));
   } else {
     res.clearCookie(stateKey);
