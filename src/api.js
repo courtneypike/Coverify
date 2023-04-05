@@ -31,8 +31,7 @@ app.use(cors())
 app.use(cookieParser())
 
 // Use the router to handle requests to the `/.netlify/functions/api` path
-  app.use(`/.netlify/functions/api`, router)
-
+app.use(`/.netlify/functions/api`, router)
 
 /**
  *
@@ -59,10 +58,6 @@ router.get('/login', function(req, res) {
   res.redirect('https://accounts.spotify.com/authorize?' +
     querystring.stringify({
       response_type: 'code',
-      client_id: client_id,
-      scope: scope,
-      redirect_uri: redirect_uri,
-      state: state,
     }));
 });
 

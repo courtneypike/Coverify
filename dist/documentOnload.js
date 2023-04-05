@@ -11,7 +11,7 @@ window.onload = function (){
         error = params.error;
 
     if (error) {
-      // alert('There was an error during the authentication. Please refresh the page and login again.');
+      alert('There was an error during the authentication. Please refresh the page and login again.');
       console.log(error)
     } else {
       if (access_token) {
@@ -30,6 +30,7 @@ window.onload = function (){
             reloadScript('user-profile-template')
             reloadScript('user-top-tracks-details')
             reloadScript('user-top-artists-details')
+            console.log(access_token)
             window.onload = getAPIs(access_token, "short_term")
             let termPlaceholder = document.getElementById('displayTerm')
             termPlaceholder.innerHTML = `<p style ="margin-bottom: 0;">Past Month</p>`
@@ -44,6 +45,8 @@ window.onload = function (){
             reloadScript('user-profile-template')
             reloadScript('user-top-tracks-details')
             reloadScript('user-top-artists-details')
+            console.log(access_token)
+
             window.onload = getAPIs(access_token, "medium_term") 
             let termPlaceholder = document.getElementById('displayTerm')
             termPlaceholder.innerHTML = `<p style ="margin-bottom: 0;">Past 6 Months</p>`
@@ -59,6 +62,8 @@ window.onload = function (){
             reloadScript('user-profile-template')
             reloadScript('user-top-tracks-details')
             reloadScript('user-top-artists-details')
+            console.log(access_token)
+
             window.onload = getAPIs(access_token, "long_term")
             let termPlaceholder = document.getElementById('displayTerm')
             termPlaceholder.innerHTML = `<p style ="margin-bottom: 0;">All Time</p>`
