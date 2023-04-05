@@ -18,25 +18,18 @@ var client_id = process.env.CLIENT_ID; // Your client id
 var client_secret = process.env.CLIENT_SECRET; // Your secret
 var redirect_uri = 'https://coverify.netlify.app/callback' | "http://localhost:8888/callback"; // Your redirect uri
 
-/**
- * Generates a random string containing numbers and letters
- * @param  {number} length The length of the string
- * @return {string} The generated string
- */
-var generateRandomString = function(length) {
-  var text = '';
-  var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-
-  for (var i = 0; i < length; i++) {
-    text += possible.charAt(Math.floor(Math.random() * possible.length));
-  }
-  return text;
-};
-
 var stateKey = 'spotify_auth_state';
+
+const app = express();
 
 // Create a router to handle routes
 const router = express.Router();
+
+router.get('/', (req, res) => {
+  res.json({
+    'hello': 'hi'
+  })
+})
 
 // Use the router to handle requests to the `/.netlify/functions/api` path
 app.use(`/.netlify/functions/api`, router);
@@ -46,7 +39,20 @@ app.use(`/.netlify/functions/api`, router);
 //   .use(express.static(__dirname + "/public"))
 //   .use(cors())
 //   .use(cookieParser());
+/**
+ * Generates a random string containing numbers and letters
+ * @param  {number} length The length of the string
+ * @return {string} The generated string
+ */
+ var generateRandomString = function(length) {
+  var text = '';
+  var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
+  for (var i = 0; i < length; i++) {
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+  }
+  return text;
+};
 
 router.get('/login', function(req, res) {
 
@@ -151,8 +157,4 @@ router.get('/refresh_token', function(req, res) {
   });
 });
 
-// console.log('Listening on 80');
-// app.listen(80);
-
-module.exports = app;
 module.exports.handler = serverless(app);
