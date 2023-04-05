@@ -1,19 +1,19 @@
 
 window.onload = function (){
-    var params = getHashParams();
+    // var params = getHashParams();
 
-    var oauthSource = document.getElementById('oauth-template').innerHTML,
-        oauthTemplate = Handlebars.compile(oauthSource),
-        oauthPlaceholder = document.getElementById('oauth');
+    // var oauthSource = document.getElementById('oauth-template').innerHTML,
+    //     oauthTemplate = Handlebars.compile(oauthSource),
+    //     oauthPlaceholder = document.getElementById('oauth');
 
-    var access_token = params.access_token,
-        refresh_token = params.refresh_token,
-        error = params.error;
+    // var access_token = params.access_token,
+    //     refresh_token = params.refresh_token,
+    //     error = params.error;
 
-    if (error) {
-      alert('There was an error during the authentication. Please refresh the page and login again.');
-    } else {
-      if (access_token) {
+    // if (error) {
+    //   alert('There was an error during the authentication. Please refresh the page and login again.');
+    // } else {
+      // if (access_token) {
         // render oauth info
         oauthPlaceholder.innerHTML = oauthTemplate({
           access_token: access_token,
@@ -67,12 +67,13 @@ window.onload = function (){
         },
         false
       );
-      } else {
-              // render initial screen
-              $('#login').show();
-              $('#loggedin').hide();
-          }
-    }
+      } 
+    //   else {
+    //           // render initial screen
+    //           $('#login').show();
+    //           $('#loggedin').hide();
+    //       }
+    // }
 
   document.getElementById('obtain-new-token').addEventListener('click', function() {
             $.ajax({
