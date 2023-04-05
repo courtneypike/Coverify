@@ -1,3 +1,9 @@
+
+/**
+ * Developed By: Courtney Pike
+ *
+ */
+
 //get first n items from Handlebars, reduces API calls
 Handlebars.registerHelper('topItemsInResults', function (from, to, context, options){
     var item = "";

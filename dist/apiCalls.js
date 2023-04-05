@@ -1,4 +1,8 @@
 
+/**
+ * Developed By: Courtney Pike
+ *
+ */
       function getAPIs(access_token, term) {
             $('#loggedin').show();
             getUserProfile(access_token)

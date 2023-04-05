@@ -1,4 +1,9 @@
 
+/**
+ * Developed By: Courtney Pike
+ *
+ */
+
 window.onload = function (){
     var params = getHashParams();
 

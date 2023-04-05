@@ -1,3 +1,8 @@
+/**
+ * Developed By: Courtney Pike
+ *
+ */
+
 //Parsing through JSON Array of top tracks to find popularity index and appending it to div
 function findPopularityTracksJSON(data){
   var mainContainer = document.getElementById("topTracksPopularity");

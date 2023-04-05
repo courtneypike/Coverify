@@ -1,3 +1,8 @@
+/**
+ * Developed By: Courtney Pike
+ *
+ */
+
 body {
     /* font-size: 14px; */
     color: #2f2f2f;
@@ -26,7 +31,6 @@ body {
     font-family: 'They call me Lazy Thinbold', sans-serif;
     color: black;
     text-align: center;
-    font-size: medium;
   }
 
   button {
