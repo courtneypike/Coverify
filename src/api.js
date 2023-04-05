@@ -27,6 +27,8 @@ const app = express();
 // Create a router to handle routes
 const router = express.Router();
 
+// Use the router to handle requests to the `/.netlify/functions/api` path
+app.use(`/.netlify/functions/api`, router);
 
 // app
 //   .use(express.static(__dirname + "/public"))
@@ -149,7 +151,5 @@ router.get('/refresh_token', function(req, res) {
   });
 });
 
-// Use the router to handle requests to the `/.netlify/functions/api` path
-app.use(`/.netlify/functions/api`, router);
 
 module.exports.handler = serverless(app);
