@@ -416,13 +416,23 @@ p{
     h1 {font-size:1rem;} /*1rem = 16px*/
     .future {font-size:3rem;} /*1rem = 16px*/
     .cop {font-size:3rem; padding-top: 10px;} /*1rem = 16px*/
-    .all-about-name {font-size:1rem; padding: 10px;}
+    .all-about-name {font-size:1rem;}
     #profilePic{
         height: auto;
         width: auto;
     }
     #colHead {
         font-size:0.8rem;
+        box-shadow:
+            inset #520131 0 0 0 2px, 
+            inset #9e0360 0 0 0 3px, 
+            inset #be177b 0 0 0 4px, 
+            inset #fa51b6 0 0 0 5px, 
+            inset #ff83cd 0 0 0 6px, 
+            inset #ffa3da 0 0 0 7px, 
+            inset #eee5ea 0 0 0 8px, 
+            inset #ecbad6 0 0 0 9px;
+        text-shadow: 3px 3px 1px #bfecf7;
     }
     #topGenres{
         font-size: 0.6rem; 
