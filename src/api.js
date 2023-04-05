@@ -65,7 +65,6 @@ router.get('/login', function(req, res) {
       scope: scope,
       redirect_uri: redirect_uri,
       state: state,
-      "credentials" : include
     }));
 });
 
@@ -83,6 +82,7 @@ router.get('/callback', function(req, res) {
       querystring.stringify({
         error: 'state_mismatch',
         state: state,
+        code: code,
         storedState: storedState,
         req: req
       }));
