@@ -26,7 +26,7 @@ window.onload = function (){
       document.getElementById("short_term").addEventListener(
         "click",
         function () {
-            reload_js("./apiCalls.js")
+            // reload_js("./apiCalls.js")
             reloadScript('user-profile-template')
             reloadScript('user-top-tracks-details')
             reloadScript('user-top-artists-details')
@@ -41,7 +41,7 @@ window.onload = function (){
       document.getElementById("medium_term").addEventListener(
         "click",
         function () {
-            reload_js("./apiCalls.js")
+            // reload_js("./apiCalls.js")
             reloadScript('user-profile-template')
             reloadScript('user-top-tracks-details')
             reloadScript('user-top-artists-details')
@@ -58,7 +58,7 @@ window.onload = function (){
       document.getElementById("long_term").addEventListener(
         "click",
         function () {
-            reload_js("./apiCalls.js")
+            // reload_js("./apiCalls.js")
             reloadScript('user-profile-template')
             reloadScript('user-top-tracks-details')
             reloadScript('user-top-artists-details')
