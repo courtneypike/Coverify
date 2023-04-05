@@ -28,13 +28,16 @@ const app = express();
 const router = express.Router();
 
 // Use the router to handle requests to the `/.netlify/functions/api` path
-app.use(`/.netlify/functions/api`, router);
+  app.use(`/.netlify/functions/api`, router)
+    .use(cors())
+    .use(cookieParser());;
 
 // app
 //   .use(express.static(__dirname + "/public"))
 //   .use(cors())
 //   .use(cookieParser());
 /**
+ *
  * Generates a random string containing numbers and letters
  * @param  {number} length The length of the string
  * @return {string} The generated string
