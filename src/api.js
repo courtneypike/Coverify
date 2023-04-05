@@ -26,12 +26,6 @@ const app = express();
 // Create a router to handle routes
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.json({
-    'hello': 'hi'
-  })
-})
-
 // Use the router to handle requests to the `/.netlify/functions/api` path
 app.use(`/.netlify/functions/api`, router);
 
