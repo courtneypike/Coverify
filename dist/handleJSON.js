@@ -89,7 +89,7 @@ function findGenresJSON(data){
       let genreFirstItem = genreArray[0]
       if(i ==0){
         genre = genreFirstItem
-        firstGenre = genreFirstItem + '<p class="cop" style="float: right">Times</p>'
+        firstGenre = genreFirstItem 
       }
       else{
         genre = genre + ', ' + genreFirstItem
