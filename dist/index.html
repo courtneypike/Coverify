@@ -215,7 +215,7 @@ setUpDownloadPageAsImage();
 
 function setUpDownloadPageAsImage() {
   document.getElementById("download").addEventListener("click", function() {
-    html2canvas(document.getElementById("selectionsComplete"), { useCORS: false, proxy: '' }).then(function(canvas) 
+    html2canvas(document.getElementById("selectionsComplete"), { useCORS: true, proxy: '' }).then(function(canvas) 
     {
       simulateDownloadImageClick(canvas.toDataURL(), 'Coverify.png');
     });
