@@ -88,7 +88,7 @@ figcaption{
 .all-about-name{
     position: relative;
     color: #4b022ec4;
-    font-family: 'They call me Lazy Thinbold', sans-serif;
+    font-family: 'They call me Lazy Thinbold', ui-sans-serif;
     font-size: 2rem;
     text-transform: uppercase; 
     text-align:center;
@@ -162,7 +162,6 @@ figcaption{
     clear: both;
     display: inline-block;
     padding-top: -12px;
-    padding-bottom: 15px;
     text-align: left;
 }
 .future {
