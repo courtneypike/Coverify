@@ -34,10 +34,10 @@ const router = express.Router();
 
 app.use(cors())
 app.use(cookieParser())
+app.use(`/.netlify/functions/api`, (proxy()))
 
 // Use the router to handle requests to the `/.netlify/functions/api` path
 app.use(`/.netlify/functions/api`, router)
-app.use`/.netlify/functions/api`, (proxy())
 
 /**
  *
