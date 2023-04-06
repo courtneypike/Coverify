@@ -3,7 +3,6 @@
  * Developed By: Courtney Pike
  *
  */
-import html2canvas from 'html2canvas';
 window.onload = function (){
   
     var params = getHashParams();
