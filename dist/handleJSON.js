@@ -22,7 +22,7 @@ function findPopularityTracksJSON(data){
   overallTotalPopularity = overallTotalPopularity/data.length
   div.innerHTML = 
   `<div class ="row"><h3 id ="colHead">
-  <span style="color: black">How Obscure are Your Songs?</span><br>
+  <span style="color: black">Popularity of Your Top Songs:</span><br>
   <span style="font-size: 0.7rem"> <span style="font-family: 'Monoton', sans-serif;"> 
   </span> <span style="color: black; font-size: 0.9rem">` 
   + Math.trunc(userTotalPopularity) + '</span> out of <span style="color: black; font-size: 0.9rem">' + overallTotalPopularity + 
@@ -46,7 +46,7 @@ function findPopularityArtistsJSON(data){
   overallTotalPopularity = overallTotalPopularity/data.length
   div.innerHTML = 
   `<div class ="row"><h3 id ="colHead">
-  <span style="color: black">How Obscure are Your Artists?</span><br>
+  <span style="color: black">Popularity of Your Top Artists:</span><br>
   <span style="font-size: 0.7rem"> <span style="font-family: 'Monoton', sans-serif;"> 
   </span> <span style="color: black; font-size: 0.9rem">` 
   + Math.trunc(userTotalPopularity) + '</span> out of <span style="color: black; font-size: 0.9rem">' + overallTotalPopularity + 
