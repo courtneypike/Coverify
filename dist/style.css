@@ -215,6 +215,11 @@ width: 80px;
 height: 3px;
 background-image: -webkit-radial-gradient(#fff 0%, transparent 85%);
 z-index: 4;
+-webkit-animation-name: cop_before_effect;
+-webkit-animation-duration: 5s;
+-webkit-animation-delay: 2s;
+-webkit-animation-timing-function: linear;
+-webkit-animation-iteration-count: infinite;
 }
 
 .cop:after {
@@ -225,8 +230,107 @@ width: 3px;
 height: 80px;
 background-image: -webkit-radial-gradient(#fff 0%, transparent 85%);
 z-index: 4;
+-webkit-animation-name: cop_after_effect;
+-webkit-animation-duration: 5s;
+-webkit-animation-delay: 2s;
+-webkit-animation-timing-function: linear;
+-webkit-animation-iteration-count: infinite;
 }
+
+  @-webkit-keyframes cop_before_effect {
+    0% {
+      left: 51px;
+      top: 74px;
+      opacity: 0;}
+    
+    15% {
+      left: 51px;
+      top: 74px;
+      opacity: 1;}
+    
+    30% {
+      left: 51px;
+      top: 74px;
+      opacity: 0;}
+    
+    35% {
+      left: 370px;
+      top: 45px;
+      opacity: 0;}
+     
+    50% {
+      left: 370px;
+      top: 45px;
+      opacity: 1;}
+    
+    65% {
+      left: 370px;
+      top: 45px;
+      opacity: 0;}
+    
+    70% {
+      left: 564px;
+      top: 74px;
+      opacity: 0;}
+     
+    85% {
+      left: 564px;
+      top: 74px;
+      opacity: 1;}
+    
+    100% {
+      left: 564px;
+      top: 74px;
+      opacity: 0;}
+  }
   
+  @-webkit-keyframes cop_after_effect {
+    0% {
+      left: 90px;
+      top: 32px;
+      opacity: 0;}
+    
+    15% {
+      left: 90px;
+      top: 32px;
+      opacity: 1;}
+    
+    30% {
+      left: 90px;
+      top: 32px;
+      opacity: 0;}
+    
+    35% {
+      left: 413px;
+      top: 11px;
+      opacity: 0;}
+     
+    50% {
+      left: 413px;
+      top: 11px;
+      opacity: 1;}
+    
+    65% {
+      left: 413px;
+      top: 11px;
+      opacity: 0;}
+    
+    70% {
+      left: 603px;
+      top: 32px;
+      opacity: 0;}
+     
+    85% {
+      left: 603px;
+      top: 32px;
+      opacity: 1;}
+    
+    100% {
+      left: 603px;
+      top: 32px;
+      opacity: 0;}
+  }
+
 header{
     font-family: 'Playfair Display', serif;
     font-weight: 900;
