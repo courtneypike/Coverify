@@ -3,8 +3,9 @@
  * Developed By: Courtney Pike
  *
  */
-
+import html2canvas from 'html2canvas';
 window.onload = function (){
+  
     var params = getHashParams();
 
     var oauthSource = document.getElementById('oauth-template').innerHTML,
@@ -99,5 +100,36 @@ window.onload = function (){
               });
             });
           }, false);
+          setUpDownloadPageAsImage();
 
+          function setUpDownloadPageAsImage() {
+            document.getElementById("download").addEventListener("click", function() {
+              html2canvas(document.getElementById("selectionsComplete")).then(function(canvas) {
+                console.log(canvas);
+                simulateDownloadImageClick(canvas.toDataURL(), 'Coverify.png');
+              });
+            });
+          }
+          
+          function simulateDownloadImageClick(uri, filename) {
+            var link = document.createElement('a');
+            if (typeof link.download !== 'string') {
+              window.open(uri);
+            } else {
+              link.href = uri;
+              link.download = filename;
+              accountForFirefox(clickLink, link);
+            }
+          }
+          
+          function clickLink(link) {
+            link.click();
+          }
+          
+          function accountForFirefox(click) { // wrapper function
+            let link = arguments[1];
+            document.body.appendChild(link);
+            click(link);
+            document.body.removeChild(link);
+          }
         }
