@@ -65,14 +65,14 @@ function reloadScript(scriptTag) {
     </div>
       </div>  
     <div class ="col" style ="margin-right: 0px; margin-left: 0px; width:100%">
-      <p class= "all-about-name" id ="topGenresBox" style ="margin-bottom: 0;"> 
-        <a href ="{{this.external_urls.spotify}}" target="_blank" style ="color: black;">
+      <p class= "all-about-name" id ="topGenresBox" style ="margin-bottom: 0"> 
+        <a href ="{{this.external_urls.spotify}}" target="_blank" style ="color: black; font-family:'Monoton', sans-serif; word-wrap:break-word">
         {{display_name}}
         </a>
       </p>
         <div class ="row" style="text-align: center; margin-right: 15px; margin-left: 15px; ">
           <div class ="row" id ="topGenresBox"  style="padding: 10px">
-            <h3 id ="colHead" style="width:100%">Most Listened to Genres
+            <h3 id ="colHead" style="width:100%; padding: 5px">Most Listened to Genres
               <div id="topGenres" style ="font-family: 'Monoton', sans-serif; font-weight: bold;">
               </div>
             </h3>
@@ -111,7 +111,7 @@ function reloadScript(scriptTag) {
           <figcaption style="padding:2px"><b>{{this.name}}</b></figcaption>
         </a>
         {{/topItemsInResults}}
-      </figure>`
+      </figure>   `
     }
     document.head.appendChild(scriptElement);
     }
