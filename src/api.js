@@ -18,6 +18,7 @@ const serverless = require("serverless-http");
 var cors = require('cors');
 var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
+var proxy = require('html2canvas-proxy');
 
 var client_id = process.env.CLIENT_ID; // client id
 var client_secret = process.env.CLIENT_SECRET; // client secret
@@ -33,7 +34,7 @@ const router = express.Router();
 
 app.use(cors())
 app.use(cookieParser())
-app.use(proxy());
+app.use(proxy())
 
 // Use the router to handle requests to the `/.netlify/functions/api` path
 app.use(`/.netlify/functions/api`, router)
