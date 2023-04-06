@@ -52,8 +52,9 @@ function reloadScript(scriptTag) {
     scriptElement.id = scriptTag;
     if(scriptTag == 'user-profile-template'){
         scriptElement.innerHTML = `<div class="future-cop">
-        <p class="future" id="mostListenedToGenre" style = "float: left;">
-        </p>
+        <h3 class="future" id="mostListenedToGenre" style = "float: left;">
+        </h3>
+        <h3 class="cop" style="float: right">Times</h3>
     </div>
   <div class ="row" style ="margin-right: 0px; margin-left: 0px">
     <div class ="col" style ="margin-right: 0px; margin-left: 0px">
