@@ -75,7 +75,7 @@
                   <div class ="col" style ="margin-right: 0px; margin-left: 0px">
                   <div>
                     <a href ="{{this.external_urls.spotify}}" target="_blank">
-                      <img id = "profilePic" src="{{images.0.url}}" class="box box3" crossorigin="anonymous">
+                      <img id = "profilePic" src="{{images.0.url}}" class="box box3">
                       </a>
                   </div>
                     </div>  
@@ -114,7 +114,7 @@
                 {{#topItemsInResults 0 5 items}}
                 <figure style ="display:inline-block; margin-right: 0px; margin-left: 0px; padding:2px; margin: 0 0 0rem;">
                   <a href ="{{this.external_urls.spotify}}" target="_blank">
-                    <img src="{{this.album.images.0.url}}" id ="covers" class="box box3" crossorigin="anonymous">
+                    <img src="{{this.album.images.0.url}}" id ="covers" class="box box3">
                   </a>                 
                   <a href ="{{this.external_urls.spotify}}" target="_blank" style="color: black;">
                     <figcaption style="padding:2px"><b>{{this.name}}</b> {{this.artists.0.name}}</figcaption>
@@ -138,7 +138,7 @@
                     {{#topItemsInResults 0 5 items}}
                     <figure style ="display:inline-block; margin-right: 0px; margin-left: 0px; padding:2px; margin: 0 0 0rem;">
                       <a href ="{{this.external_urls.spotify}}" target="_blank">
-                      <img src="{{this.images.0.url}}" id ="covers" class="box box3" style="float: right; transform: rotate(-4deg)" crossorigin="anonymous">    
+                      <img src="{{this.images.0.url}}" id ="covers" class="box box3" style="float: right; transform: rotate(-4deg)">    
                       </a>               
                       <a href ="{{this.external_urls.spotify}}" target="_blank" style="color: black;">
                         <figcaption style="padding:2px"><b>{{this.name}}</b></figcaption>
@@ -153,7 +153,7 @@
     <div>
       <p id ="footer" style ="margin-bottom:0px"><span style="color:black;font-size:1rem;">Thank you! by </span>
         <a style="color:black;" href ="https://coverify.netlify.app/">coverify.netlify.app</a></p>
-      <img src="./images/Spotify_Logo_RGB_Black.png" style="width:80px;height:auto" crossorigin="anonymous"></img>
+      <img src="./images/Spotify_Logo_RGB_Black.png" style="width:80px;height:auto"></img>
     </div>
   </div>
   </div>
@@ -215,8 +215,8 @@ setUpDownloadPageAsImage();
 
 function setUpDownloadPageAsImage() {
   document.getElementById("download").addEventListener("click", function() {
-    html2canvas(document.getElementById("selectionsComplete")).then(function(canvas) {
-      console.log(canvas);
+    html2canvas(document.getElementById("selectionsComplete")).then(function(canvas) 
+    {
       simulateDownloadImageClick(canvas.toDataURL(), 'Coverify.png');
     });
   });
