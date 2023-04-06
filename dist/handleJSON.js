@@ -25,7 +25,7 @@ function findPopularityTracksJSON(data){
   <span style="color: black">Obscurity Ranking</span><br>
   <span style="font-size: 0.7rem"> <span style="font-family: 'Monoton', sans-serif;"> 
   Your top tracks rank </span> <span style="color: black; font-size: 0.9rem">` 
-  + Math.trunc(userTotalPopularity) + '</span> out of <span style="color: black">' + overallTotalPopularity + 
+  + Math.trunc(userTotalPopularity) + '</span> out of <span style="color: black; font-size: 0.9rem">' + overallTotalPopularity + 
   `</span> on Spotify's popularity index</h3></div>`
   mainContainer.appendChild(div);
 }
@@ -49,7 +49,7 @@ function findPopularityArtistsJSON(data){
   <span style="color: black">Obscurity Ranking</span><br>
   <span style="font-size: 0.7rem"> <span style="font-family: 'Monoton', sans-serif;">
   Your top artists rank </span><span style="color: black; font-size: 0.9rem">` 
-  + Math.trunc(userTotalPopularity) + '</span> out of <span style="color: black">' + overallTotalPopularity + 
+  + Math.trunc(userTotalPopularity) + '</span> out of <span style="color: black; font-size: 0.9rem">' + overallTotalPopularity + 
   `</span> on Spotify's popularity index</span></h3></div>`
   mainContainer.appendChild(div);
 }
