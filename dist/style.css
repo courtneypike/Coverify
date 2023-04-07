@@ -30,7 +30,7 @@ body {
 
   #coverifySubhead {
     text-transform: uppercase; 
-    font-family: 'They call me Lazy Thinbold', sans-serif;
+    font-family: 'Monoton', sans-serif;;
     color: black;
     text-align: center;
   }
@@ -54,7 +54,7 @@ body {
   box-sizing: border-box;
   color: #fff;
   cursor: pointer;
-  font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Monoton', sans-serif;;
   font-size: 16px;
   font-weight: 400;
   outline: none;
@@ -80,7 +80,7 @@ body {
 }
 
 .button-54 {
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Monoton', sans-serif;
   font-size: 16px;
   letter-spacing: 2px;
   text-decoration: none;
