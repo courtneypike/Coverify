@@ -30,9 +30,10 @@ body {
 
   #coverifySubhead {
     text-transform: uppercase; 
-    font-family: 'Monoton', sans-serif;;
+    font-family: 'They call me Lazy Thinbold', sans-serif;
     color: black;
     text-align: center;
+    font-size: 1rem;
   }
 
   button {
