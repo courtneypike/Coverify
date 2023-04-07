@@ -20,7 +20,12 @@ body {
     margin: 0;
     padding: 0;
   }
-  
+
+#termOptions{
+    align-content: center;
+    padding-bottom: 25px;
+}
+
   #coverifyLogo {
     text-transform: uppercase; 
     font-family: 'They call me Lazy Thinbold', sans-serif;
@@ -235,7 +240,7 @@ figcaption{
 /* left: 0;
 top: -310px; */
 font-family: 'Rocket Pop', sans-serif;
-font-size: 50px;
+font-size: 1.7rem;
 /* margin-top: 160px; */
 margin-bottom: 0;
 color: #EB219B;
@@ -250,7 +255,7 @@ padding-right: 70px; */
 .cop {
 position: relative;
 font-family: 'Rocket Pop', sans-serif;
-font-size: 50px;
+font-size: 1.7rem;
 /* line-height: 1; */
 color: black;
 /* padding-left: 15px; */
@@ -388,8 +393,8 @@ p{
 /*MEDIAQUERIES*/
 @media only all and (min-width: 400px){
     h1 {font-size:3rem;} /*1rem = 16px*/    
-    .future {font-size:3rem;} /*1rem = 16px*/
-    .cop {font-size:3rem;} /*1rem = 16px*/
+/*     .future {font-size:3rem;} /*1rem = 16px*/
+    .cop {font-size:3rem;} /*1rem = 16px*/ */
     .all-about-name {font-size:1rem;}
     #covers{
         height: 30%;
@@ -456,8 +461,8 @@ p{
         overflow: hidden;
     }
     h1 {font-size:1rem;} /*1rem = 16px*/
-    .future {font-size:3rem;} /*1rem = 16px*/
-    .cop {font-size:3rem;} /*1rem = 16px*/
+/*     .future {font-size:3rem;} /*1rem = 16px*/
+    .cop {font-size:3rem;} /*1rem = 16px*/ */
     .all-about-name {font-size:1rem;}
     #profilePic{
         height: auto;
