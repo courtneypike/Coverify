@@ -2,8 +2,6 @@
  * Developed By: Courtney Pike
  *
  */
-
-
  @import url('https://fonts.cdnfonts.com/css/rocket-pop?styles=33600');
  @import url('https://fonts.cdnfonts.com/css/barcade');
 
@@ -46,6 +44,68 @@ body {
 #selectionsComplete {
     width:400px;
     /* height: 700px; */
+}
+
+.button-37 {
+  background-color: #13aa52;
+  border: 1px solid #13aa52;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  outline: none;
+  outline: 0;
+  padding: 10px 25px;
+  text-align: center;
+  transform: translateY(0);
+  transition: transform 150ms, box-shadow 150ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-37:hover {
+  box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
+  transform: translateY(-2px);
+}
+
+@media (min-width: 768px) {
+  .button-37 {
+    padding: 10px 30px;
+  }
+}
+
+.button-54 {
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #000;
+  cursor: pointer;
+  border: 3px solid;
+  padding: 0.25em 0.5em;
+  box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-54:active {
+  box-shadow: 0px 0px 0px 0px;
+  top: 5px;
+  left: 5px;
+}
+
+@media (min-width: 768px) {
+  .button-54 {
+    padding: 0.25em 0.75em;
+  }
 }
 
 figure{
@@ -169,7 +229,7 @@ figcaption{
 /* left: 0;
 top: -310px; */
 font-family: 'Rocket Pop', sans-serif;
-font-size: 200px;
+font-size: 50px;
 /* margin-top: 160px; */
 margin-bottom: 0;
 color: #EB219B;
@@ -184,7 +244,7 @@ padding-right: 70px; */
 .cop {
 position: relative;
 font-family: 'Rocket Pop', sans-serif;
-font-size: 200px;
+font-size: 50px;
 /* line-height: 1; */
 color: black;
 /* padding-left: 15px; */
