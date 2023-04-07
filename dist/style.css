@@ -104,12 +104,13 @@ body {
   }
 }
 .footer {
+    position:absolute;
     left: 0;
     bottom: 0;
     width: 100%;
     color: 4b022ec4;
     text-align: center;
-    padding-bottom: 20px;
+    padding: 20px;
   }
 
 figure{
