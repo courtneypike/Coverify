@@ -107,6 +107,14 @@ body {
     padding: 0.25em 0.75em;
   }
 }
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: 4b022ec4;
+    text-align: center;
+  }
 
 figure{
     margin: 0 0 0rem;
