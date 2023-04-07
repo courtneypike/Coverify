@@ -160,7 +160,7 @@ figcaption{
     position: relative;
     color: #4b022ec4;
     font-family: 'They call me Lazy Thinbold', ui-sans-serif;
-    font-size: 2rem;
+    font-size: 1rem;
     text-transform: uppercase; 
     text-align:center;
 }
@@ -393,8 +393,8 @@ p{
 /*MEDIAQUERIES*/
 @media only all and (min-width: 400px){
     h1 {font-size:3rem;} /*1rem = 16px*/    
-/*     .future {font-size:3rem;} /*1rem = 16px*/
-    .cop {font-size:3rem;} /*1rem = 16px*/ */
+/* .future {font-size:3rem;} */
+/*     .cop {font-size:3rem;} */
     .all-about-name {font-size:1rem;}
     #covers{
         height: 30%;
@@ -461,8 +461,8 @@ p{
         overflow: hidden;
     }
     h1 {font-size:1rem;} /*1rem = 16px*/
-/*     .future {font-size:3rem;} /*1rem = 16px*/
-    .cop {font-size:3rem;} /*1rem = 16px*/ */
+/*      .future {font-size:3rem;} */
+/*      .cop {font-size:3rem;} */
     .all-about-name {font-size:1rem;}
     #profilePic{
         height: auto;
