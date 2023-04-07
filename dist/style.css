@@ -51,10 +51,9 @@ body {
   background-color: #13aa52;
   font-family: 'Monoton', sans-serif;
   font-size: 16px;
-  letter-spacing: 2px;
   text-decoration: none;
   text-transform: uppercase;
-  color: white;
+  color: black;
   cursor: pointer;
   border: 3px solid;
   padding: 0.25em 0.5em;
@@ -80,7 +79,6 @@ body {
 .button-54 {
   font-family: 'Monoton', sans-serif;
   font-size: 16px;
-  letter-spacing: 2px;
   text-decoration: none;
   text-transform: uppercase;
   color: #000;
