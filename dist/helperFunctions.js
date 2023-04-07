@@ -56,8 +56,6 @@ function reloadScript(scriptTag) {
         </h3>
         <h3 class="cop" style="float: right">Times</h3>
     </div>
-    <div id ="displayTerm" style ="margin-bottom: 0;">
-    </div>  
   <div class ="row" style ="margin-right: 0px; margin-left: 0px">
     <div class ="col" style ="margin-right: 0px; margin-left: 0px">
     <div>
