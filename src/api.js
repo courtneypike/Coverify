@@ -23,7 +23,7 @@ var proxy = require('html2canvas-proxy');
 var client_id = process.env.CLIENT_ID; // client id
 var client_secret = process.env.CLIENT_SECRET; // client secret
 
-var redirect_uri = 'https://coverify.netlify.app/.netlify/functions/api/callback'  // Redirect uri with router path
+var redirect_uri = 'https://coverify-music/.netlify/functions/api/callback'  // Redirect uri with router path
 
 var stateKey = 'spotify_auth_state';
 
