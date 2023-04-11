@@ -48,6 +48,8 @@ body {
     font-size: 1rem;
   }
 #selectionsComplete {
+    display: none;
+    text-align: center;
     width:400px;
     /* height: 700px; */
 }
@@ -284,10 +286,11 @@ header{
     align-content: center;
     justify-content: center;
 }
-#login, #loggedin, #termOptions, #selectionsComplete{
+#login, #loggedin, #termOptions{
     display: none;
     text-align: center;
-    padding:10px;
+    padding: 3px;
+    padding-bottom: 25px;
   }
 .text-overflow {
 overflow: hidden;
