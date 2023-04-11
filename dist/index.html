@@ -207,7 +207,7 @@ function setUpDownloadPageAsImage() {
   document.getElementById("download").addEventListener("click", function() {
     html2canvas(document.getElementById("selectionsComplete"), { useCORS: true, proxy: '', scale: '2'}).then(function(canvas) 
     {
-      simulateDownloadImageClick(canvas.toDataURL(), 'Coverify.png');
+      simulateDownloadImageClick(canvas.toDataURL(), 'Coverify.jpg');
     });
   });
 }
