@@ -1,4 +1,4 @@
-Turn your Spotify activity into a Magazine with Coverify. Website link: https://coverify.netlify.app/
+Turn your Spotify activity into a Magazine with Coverify. Website link: https://coverify-music.com/
 
 Application uses express, serverless http, and netlify lambda through middleware router.
 
