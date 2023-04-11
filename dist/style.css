@@ -125,7 +125,7 @@ figure{
 #displayTerm{
     color: #4b022ec4;
     font-family: 'They call me Lazy Thinbold', sans-serif;
-    font-size: 1.5rem;
+    font-size: 1rem;
 }
 #footer{
     color: #4b022ec4;
@@ -407,7 +407,7 @@ p{
         /* padding: 25px 0; */
     }
     #colHead {
-        font-size:0.8rem;
+        font-size:0.7rem;
     }
     #topGenresBox {
         padding: 15px;
@@ -469,7 +469,7 @@ p{
         width: auto;
     }
     #colHead {
-        font-size:0.8rem;
+        font-size:0.7rem;
     }
     #topArtistsPopularity{
         box-shadow:
