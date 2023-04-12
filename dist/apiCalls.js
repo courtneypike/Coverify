@@ -19,7 +19,6 @@
                     'Authorization': 'Bearer ' + access_token
                   },
                   success: function(response) {
-                    console.log(response)
                     let userProfileSource = document.getElementById('user-profile-template').innerHTML,
                     userProfileTemplate = Handlebars.compile(userProfileSource),
                     userProfilePlaceholder = document.getElementById('user-profile');
