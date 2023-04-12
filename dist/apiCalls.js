@@ -5,9 +5,15 @@
  */
       function getAPIs(access_token, term) {
             $('#loggedin').show();
+            try {
             getUserProfile(access_token)
             getTopTracks(access_token, term)
             getUserTopArtists(access_token, term)
+            }
+            catch (error){
+              let logginContainer = document.getElementById("loggedin");
+              logginContainer.innerHTML = '<p>There was an error in fetching your Spotify information. Please click the Coverify Logo to refresh your session and try again.</p>'
+            }
       }
 
       //User profile API call
@@ -30,9 +36,7 @@
             }
             catch (error){
               console.error('Error accessing innerHTML:', error);
-              let logginContainer = document.getElementById("loggedin");
-              logginContainer.innerHTML = '<p>There was an error in fetching your Spotify information. Please click the Coverify Logo to refresh your session.</p>'
-            }
+          }
       } 
 
       //top tracks API call
@@ -58,9 +62,7 @@
             }
             catch (error){
               console.error('Error accessing innerHTML:', error);
-              let logginContainer = document.getElementById("loggedin");
-              logginContainer.innerHTML = '<p>There was an error in fetching your Spotify information. Please click the Coverify Logo to refresh your session.</p>'
-            }
+          }
         }
 
       //User profile API call
@@ -85,7 +87,5 @@
             }
             catch (error){
               console.error('Error accessing innerHTML:', error);
-              let logginContainer = document.getElementById("loggedin");
-              logginContainer.innerHTML = '<p>There was an error in fetching your Spotify information. Please click the Coverify Logo to refresh your session.</p>'
-            }
+           }
       } 
