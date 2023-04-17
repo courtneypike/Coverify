@@ -1,4 +1,3 @@
-google.com, pub-4098843948412144, DIRECT, f08c47fec0942fa0
 152media.com, 152, DIRECT
 152media.info, 152M1, RESELLER
 152media.info, 152M10, RESELLER
