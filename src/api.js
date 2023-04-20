@@ -85,7 +85,8 @@ router.get('/callback', function(req, res) {
       querystring.stringify({
         error: 'state_mismatch',
         state: state,
-        storedState: storedState
+        storedState: storedState,
+        cookies: req.cookies,
       }));
   } else {
     res.clearCookie(stateKey);
