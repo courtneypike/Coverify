@@ -87,6 +87,7 @@ router.get('/callback', function(req, res) {
         state: state,
         storedState: storedState,
         cookies: req.cookies,
+        req:req
       }));
   } else {
     res.clearCookie(stateKey);
