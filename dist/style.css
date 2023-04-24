@@ -472,6 +472,10 @@ p{
         height: auto;
         width: auto;
     }
+    #covers{
+        height: 30%;
+        width: 30%;
+    }
     #colHead {
         font-size:0.7rem;
     }
