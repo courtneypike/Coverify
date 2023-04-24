@@ -31,8 +31,12 @@
                     
                     userProfilePlaceholder.innerHTML = userProfileTemplate(response);
                     $('#selectionsComplete').show();
-                  }
-              });
+                  },
+                  error: function(error){     
+                  alert('There was an error. Please refresh the page by clicking the Coverify logo and login again.');
+                  console.log(error)
+                  }              
+                });
             }
             catch (error){
               let logginContainer = document.getElementById("loggedin");
@@ -62,7 +66,11 @@
                     $('#selectionsComplete').show();
                     document.getElementById("selectionsComplete").style.display = "inline-block";
 
-                  }
+                  },
+                  error: function(error){     
+                  alert('There was an error. Please refresh the page by clicking the Coverify logo and login again.');
+                  console.log(error)
+                  }     
               });
             }
             catch (error){
@@ -90,7 +98,11 @@
                     findPopularityArtistsJSON(response.items)
                     findGenresJSON(response.items)
                     $('#selectionsComplete').show();
-                  }
+                  },
+                  error: function(error){     
+                  alert('There was an error. Please refresh the page by clicking the Coverify logo and login again.');
+                  console.log(error)
+                  }     
               });
             }
             catch (error){
