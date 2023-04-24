@@ -35,9 +35,14 @@
               });
             }
             catch (error){
+              let logginContainer = document.getElementById("loggedin");
+              logginContainer.innerHTML = '<p>There was an error in fetching your Spotify information. Please click the Coverify Logo to refresh your session and try again.</p>'
+         
               console.error('Error accessing innerHTML:', error);
+              
           }
       } 
+      
 
       //top tracks API call
       function getTopTracks(access_token, term){
@@ -61,6 +66,9 @@
               });
             }
             catch (error){
+              let logginContainer = document.getElementById("loggedin");
+              logginContainer.innerHTML = '<p>There was an error in fetching your Spotify information. Please click the Coverify Logo to refresh your session and try again.</p>'
+
               console.error('Error accessing innerHTML:', error);
           }
         }
@@ -86,6 +94,8 @@
               });
             }
             catch (error){
+              let logginContainer = document.getElementById("loggedin");
+              logginContainer.innerHTML = '<p>There was an error in fetching your Spotify information. Please click the Coverify Logo to refresh your session and try again.</p>'
               console.error('Error accessing innerHTML:', error);
            }
       } 
