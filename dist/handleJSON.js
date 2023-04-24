@@ -18,8 +18,12 @@ function findPopularityTracksJSON(data){
     overallTotalPopularity += 100;
     mainContainer.appendChild(div);
   }
+  
   userTotalPopularity = userTotalPopularity/data.length
   overallTotalPopularity = overallTotalPopularity/data.length
+
+  if(isNaN(overallTotalPopularity) == false){
+
   div.innerHTML = 
   `<div class ="row"><h3 id ="colHead">
   <span style="font-size: 0.7rem"> Your Tracks Rank
@@ -27,6 +31,11 @@ function findPopularityTracksJSON(data){
   + Math.trunc(userTotalPopularity) + '</span> out of <span style="color: black; font-size: 0.9rem">' + overallTotalPopularity + 
   `</span> in Popularity</span></h3></div>`
   mainContainer.appendChild(div);
+  }
+  else{
+    let logginContainer = document.getElementById("loggedin");
+    logginContainer.innerHTML = '<p>There was an error in fetching your Spotify information. Please click the Coverify Logo to refresh your session and try again.</p>'
+  }
 }
 
 //Parsing through JSON Array of top artists to find popularity index and appending it to div
@@ -43,7 +52,7 @@ function findPopularityArtistsJSON(data){
           }
   userTotalPopularity = userTotalPopularity/data.length
   overallTotalPopularity = overallTotalPopularity/data.length
-  console.log(isNaN(overallTotalPopularity))
+  if(isNaN(overallTotalPopularity) == false){
   div.innerHTML = 
   `<div class ="row"><h3 id ="colHead">
   <span style="font-size: 0.7rem"> Your Artists Rank
@@ -51,6 +60,11 @@ function findPopularityArtistsJSON(data){
   + Math.trunc(userTotalPopularity) + '</span> out of <span style="color: black; font-size: 0.9rem">' + overallTotalPopularity + 
   `</span> in Popularity</span></h3></div>`
   mainContainer.appendChild(div);
+  } 
+  else{
+    let logginContainer = document.getElementById("loggedin");
+    logginContainer.innerHTML = '<p>There was an error in fetching your Spotify information. Please click the Coverify Logo to refresh your session and try again.</p>'
+  }
 }
 
 //Finding most listened to genres for title of magazine and section on most listened to genres
@@ -103,7 +117,7 @@ function findGenresJSON(data){
     titleDiv.innerHTML = firstGenre
     titleMainContainer.appendChild(titleDiv);
     }
-    else{
+    else {
       let logginContainer = document.getElementById("loggedin");
       logginContainer.innerHTML = '<p>There was an error in fetching your Spotify information. Please click the Coverify Logo to refresh your session and try again.</p>'
     }
