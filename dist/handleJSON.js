@@ -43,6 +43,7 @@ function findPopularityArtistsJSON(data){
           }
   userTotalPopularity = userTotalPopularity/data.length
   overallTotalPopularity = overallTotalPopularity/data.length
+  console.log(isNaN(overallTotalPopularity))
   div.innerHTML = 
   `<div class ="row"><h3 id ="colHead">
   <span style="font-size: 0.7rem"> Your Artists Rank
@@ -62,6 +63,7 @@ function findGenresJSON(data){
     let div = document.createElement("div");
     let allGenres = []
 
+    if(data.length > 1){
       for (let i = 0; i < data.length; i++) {
         let artistGenres = data[i].genres
         for (let j = 0; j < artistGenres.length; j++) {
@@ -100,5 +102,10 @@ function findGenresJSON(data){
     //top all time genre
     titleDiv.innerHTML = firstGenre
     titleMainContainer.appendChild(titleDiv);
+    }
+    else{
+      let logginContainer = document.getElementById("loggedin");
+      logginContainer.innerHTML = '<p>There was an error in fetching your Spotify information. Please click the Coverify Logo to refresh your session and try again.</p>'
+    }
 }
 
